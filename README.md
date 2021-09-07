@@ -7,7 +7,7 @@ Asp.Net Core 5.0 Blog Proje Kampi - Murat Yucedag
 
 Sonunda Github profilimi keşfettin. <br>
 Bir şeyin daha iyi olabileceğini düşünüyorsanız, lütfen projeleri klonlamaktan/çatallamaktan, sorunları dile getirmekten ve Halkla İlişkiler göndermekten çekinmeyin.<br>
-Bana buradan bir şey sor <a href="https://github.com/smtdeveloper"><b>Buradan</b></a><br>
+Bana <a href="https://github.com/smtdeveloper"><b>Buradan</b></a> bir şey sor <br>
 veya <a href="https://www.instagram.com/smtcoder/"><b>Mesaj</b></a> gönder
 
   <div> 
