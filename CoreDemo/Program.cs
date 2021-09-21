@@ -22,5 +22,8 @@ namespace CoreDemo
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+
+      
     }
 }
