@@ -25,6 +25,11 @@ namespace DataAccessLayer.Respositories
             c.SaveChanges();
         }
 
+        public List<Blog> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public Blog GetById(int Id)
         {
             using var c = new Context();

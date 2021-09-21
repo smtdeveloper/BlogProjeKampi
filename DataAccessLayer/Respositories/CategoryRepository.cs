@@ -26,6 +26,11 @@ namespace DataAccessLayer.Respositories
             c.SaveChanges();
         }
 
+        public List<Category> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public Category GetById(int Id)
         {
             return c.Categories.Find(Id);
