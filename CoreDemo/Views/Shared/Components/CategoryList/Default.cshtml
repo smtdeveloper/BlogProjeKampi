@@ -1,0 +1,19 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Category>
+
+<div class="tech-btm">
+    <h4> Kategoriler </h4>
+
+    <ul class="list-group single">
+
+        @foreach (var item in Model)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+               @item.Name
+                <span class="badge badge-primary badge-pill">0</span>
+            </li>
+        }
+
+
+
+    </ul>
+</div>
