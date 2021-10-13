@@ -1,0 +1,246 @@
+﻿
+@model EntityLayer.Concrete.Writer
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Yazar kayıt ol  ---------->
+
+<style>
+    body {
+        color: #000;
+        overflow-x: hidden;
+        height: 100%;
+       /* background-image: url("https://i.imgur.com/GMmCQHC.png");*/
+        background-repeat: no-repeat;
+        background-size: 100% 100%
+    }
+
+    .card {
+        padding: 30px 40px;
+        margin-top: 60px;
+        margin-bottom: 60px;
+        border: none !important;
+        box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2)
+    }
+
+    .blue-text {
+        color: #00BCD4
+    }
+
+    .form-control-label {
+        margin-bottom: 0
+    }
+
+    input,
+    textarea,
+    button {
+        padding: 8px 15px;
+        border-radius: 5px !important;
+        margin: 5px 0px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        font-size: 18px !important;
+        font-weight: 300
+    }
+
+        input:focus,
+        textarea:focus {
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            border: 1px solid #00BCD4;
+            outline-width: 0;
+            font-weight: 400
+        }
+
+    .btn-block {
+        text-transform: uppercase;
+        font-size: 15px !important;
+        font-weight: 400;
+        height: 43px;
+        cursor: pointer
+    }
+
+        .btn-block:hover {
+            color: #fff !important
+        }
+
+    button:focus {
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        outline-width: 0
+    }
+</style>
+
+
+<div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            <h1> Kayıt Ol </h1>
+
+            <div class="card">
+               
+                    <h5 class="text-center mb-4">Blog Yazarı olmak için hemen kayıt ol :)</h5>
+                <form method="post" class="form-card">
+
+                    <div class="row justify-content-between text-left">
+
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3">Ad Soyad<span class="text-danger"> *</span></label>
+                            <input type="text" id="Name" name="Name" placeholder="Ad Soyad Giriniz" onblur="validate(1)">
+                        </div>
+
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label>
+                            <input type="email" id="Mail" name="Mail" placeholder="Email Giriniz" onblur="validate(2)">
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between text-left">
+
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3">Parola<span class="text-danger"> *</span></label>
+                            @Html.PasswordFor(x => x.Password, new { @class = "form-control", @id = "password1", @placeholder = "Parola Giriniz", @required = "" })
+                            @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3">Parolayı Doğrula<span class="text-danger"> *</span></label>
+                            <input type="password" name="PasswordAgain" class="form-control" id="password2" placeholder="Parolayı Tekrar Giriniz" required="" />
+                        </div>
+
+                    </div>
+
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3">Resim Yolu :)<span class="text-danger"> *</span></label>
+                            <input type="text" id="Image" name="Image" placeholder="Simdilik dosya yolu ile..." onblur="validate(5)">
+                        </div>
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3">Şehirler<span class="text-danger"> *</span></label>
+
+                            @*@Html.DropDownList("cities", (ViewBag.Cities), "Şehir Seçiniz", new { @class = "form-control dropdown" })*@
+
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-12 flex-column d-flex">
+                            <label class="form-control-label px-3">Hakkınızda<span class="text-danger"> *</span></label>
+                            <input type="text" id="About" name="About" placeholder="Kendinizi Tanımlayın... (bio)" onblur="validate(6)">
+                        </div>
+                    </div>
+
+                    <h5>
+                        <a href="#" id="btn1"> <b> Tüm şartları okudum ve kabul ediyorum. </b></a>
+                    </h5>
+
+                    <button type="submit" class="btn btn-primary submit mb-4">Kayıt Ol</button>
+
+
+
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    $('#btn1').click(function () {
+        swal("Site Kabul Şartları", "Sitemizde verdiğiniz mail adresi üzerinden bilgi ve haber e-postaları spam ölçüsüne varmadan gönderilmeye devam edilecektir. Eğer e-posta bülteninden çıkmak iterseniz mail ileti dizisini durdurabilirsiniz, şifre ve mail adresleriniz şifrelenmiş formatta herhangi bir kullanıcının görmeyeceği şekilde veri tabanlarımızda saklanmaktadır.");
+    });
+
+    function validate(val) {
+        v1 = document.getElementById("Name");
+        v2 = document.getElementById("Mail");
+        v3 = document.getElementById("Password");
+        v4 = document.getElementById("VerifyPassword");
+        v5 = document.getElementById("Image");
+        v6 = document.getElementById("About");
+
+        flag1 = true;
+        flag2 = true;
+        flag3 = true;
+        flag4 = true;
+        flag5 = true;
+        flag6 = true;
+
+        if (val >= 1 || val == 0) {
+            if (v1.value == "") {
+                v1.style.borderColor = "red";
+                flag1 = false;
+            }
+            else {
+                v1.style.borderColor = "green";
+                flag1 = true;
+            }
+        }
+
+        if (val >= 2 || val == 0) {
+            if (v2.value == "") {
+                v2.style.borderColor = "red";
+                flag2 = false;
+            }
+            else {
+                v2.style.borderColor = "green";
+                flag2 = true;
+            }
+        }
+        if (val >= 3 || val == 0) {
+            if (v3.value == "") {
+                v3.style.borderColor = "red";
+                flag3 = false;
+            }
+            else {
+                v3.style.borderColor = "green";
+                flag3 = true;
+            }
+        }
+        if (val >= 4 || val == 0) {
+            if (v4.value == "") {
+                v4.style.borderColor = "red";
+                flag4 = false;
+            }
+            else {
+                v4.style.borderColor = "green";
+                flag4 = true;
+            }
+        }
+        if (val >= 5 || val == 0) {
+            if (v5.value == "") {
+                v5.style.borderColor = "red";
+                flag5 = false;
+            }
+            else {
+                v5.style.borderColor = "green";
+                flag5 = true;
+            }
+        }
+        if (val >= 6 || val == 0) {
+            if (v6.value == "") {
+                v6.style.borderColor = "red";
+                flag6 = false;
+            }
+            else {
+                v6.style.borderColor = "green";
+                flag6 = true;
+            }
+        }
+
+        flag = flag1 && flag2 && flag3 && flag4 && flag5 && flag6;
+
+        return flag;
+    }
+</script>

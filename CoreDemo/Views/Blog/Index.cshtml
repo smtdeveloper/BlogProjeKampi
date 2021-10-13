@@ -6,11 +6,21 @@
     Layout = "~/Views/Shared/UserLayout.cshtml";
 }
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Blog ındex -->
+
+
+
 <section class="main-content-w3layouts-agileits">
     <div class="container">
         <h3 class="tittle">Bloglar</h3>
         <div class="inner-sec">
-            <!--left-->
+            <!-- Blog ındex -->
             <div class="left-blog-info-w3layouts-agileits text-left">
                 <div class="row">
                     @foreach (var item in Model)
@@ -41,10 +51,10 @@
 
                                 <h5 class="card-title">
                                     <a href="/blog/BlogReadAll/@item.BlogId/"> @item.Title </a>
-                                    
+
                                 </h5>
                                 <p>Blog id : @item.BlogId </p>
-                                <p class="card-text mb-3"> @item.Content.Substring(0,item.Content.Substring(0,100).LastIndexOf(" "))... </p>
+                                <p class="card-text mb-3"> @item.Content.Substring(0, item.Content.Substring(0, 100).LastIndexOf(" "))... </p>
                                 <a href="/blog/BlogReadAll/@item.BlogId/" class="btn btn-primary read-m">Devamını Oku...</a>
                             </div>
                         </div>
