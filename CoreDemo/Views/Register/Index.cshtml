@@ -90,65 +90,78 @@
             <div class="card">
                
                     <h5 class="text-center mb-4">Blog Yazarı olmak için hemen kayıt ol :)</h5>
-                <form method="post" class="form-card">
+                    <form method="post" class="form-card">
 
-                    <div class="row justify-content-between text-left">
+                        <div class="row justify-content-between text-left">
 
-                        <div class="form-group col-sm-6 flex-column d-flex">
-                            <label class="form-control-label px-3">Ad Soyad<span class="text-danger"> *</span></label>
-                            <input type="text" id="Name" name="Name" placeholder="Ad Soyad Giriniz" onblur="validate(1)">
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label px-3">Ad Soyad<span class="text-danger"> *</span></label>
+                                <input type="text" id="Name" name="Name" placeholder="Ad Soyad Giriniz" onblur="validate(1)">
+                            </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label>
+                                <input type="email" id="Mail" name="Mail" placeholder="Email Giriniz" onblur="validate(2)">
+                            </div>
                         </div>
 
-                        <div class="form-group col-sm-6 flex-column d-flex">
-                            <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label>
-                            <input type="email" id="Mail" name="Mail" placeholder="Email Giriniz" onblur="validate(2)">
-                        </div>
-                    </div>
+                        <div class="row justify-content-between text-left">
 
-                    <div class="row justify-content-between text-left">
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label px-3">Parola<span class="text-danger"> *</span></label>
+                                @Html.PasswordFor(x => x.Password, new { @class = "form-control", @id = "password1", @name = "password1", @placeholder = "Parola Giriniz", @required = "" })
+                                @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+                            </div>
 
-                        <div class="form-group col-sm-6 flex-column d-flex">
-                            <label class="form-control-label px-3">Parola<span class="text-danger"> *</span></label>
-                            @Html.PasswordFor(x => x.Password, new { @class = "form-control", @id = "password1", @placeholder = "Parola Giriniz", @required = "" })
-                            @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="form-group col-sm-6 flex-column d-flex">
-                            <label class="form-control-label px-3">Parolayı Doğrula<span class="text-danger"> *</span></label>
-                            <input type="password" name="PasswordAgain" class="form-control" id="password2" placeholder="Parolayı Tekrar Giriniz" required="" />
-                        </div>
-
-                    </div>
-
-                    <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-6 flex-column d-flex">
-                            <label class="form-control-label px-3">Resim Yolu :)<span class="text-danger"> *</span></label>
-                            <input type="text" id="Image" name="Image" placeholder="Simdilik dosya yolu ile..." onblur="validate(5)">
-                        </div>
-                        <div class="form-group col-sm-6 flex-column d-flex">
-                            <label class="form-control-label px-3">Şehirler<span class="text-danger"> *</span></label>
-
-                            @*@Html.DropDownList("cities", (ViewBag.Cities), "Şehir Seçiniz", new { @class = "form-control dropdown" })*@
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label px-3">Parolayı Doğrula<span class="text-danger"> *</span></label>
+                                <input type="password" name="PasswordAgain" class="form-control" id="password2" placeholder="Parolayı Tekrar Giriniz" required="" />
+                            </div>
 
                         </div>
-                    </div>
 
-                    <div class="row justify-content-between text-left">
-                        <div class="form-group col-12 flex-column d-flex">
-                            <label class="form-control-label px-3">Hakkınızda<span class="text-danger"> *</span></label>
-                            <input type="text" id="About" name="About" placeholder="Kendinizi Tanımlayın... (bio)" onblur="validate(6)">
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label px-3">Resim Yolu :)<span class="text-danger"> *</span></label>
+                                <input type="text" id="Image" name="Image" placeholder="Simdilik dosya yolu ile..." onblur="validate(5)">
+                            </div>
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label px-3"> Şehir / İlçe <span class="text-danger"> *</span></label>
+
+                                @*@Html.DropDownList("cities", (ViewBag.Cities), "Şehir Seçiniz", new { @class = "form-control dropdown ", @id = "City", @name = "City", })*@
+                                <input type="text" id="City" name="City" placeholder="Şehir / İlçe Giriniz" onblur="validate(6)">
+                            </div>
                         </div>
-                    </div>
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label px-3"> Telefon </label>
+                                <input type="text" id="Phone" name="Phone" placeholder="05...">
+                            </div>
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label px-3">Cinsiyet <span class="text-danger"> *</span></label>
+                                <div>
+                                    <input type="radio" name="Gender" value="Kadın"> Kadın
+                                    <input type="radio" name="Gender" value="Erkek"> Erkek
+                                    <input type="radio" name="Gender" value="Bilinmeyen"> Bilinmeyen
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-12 flex-column d-flex">
+                                <label class="form-control-label px-3">Hakkınızda<span class="text-danger"> *</span></label>
+                                <input type="text" id="About" name="About" placeholder="Bio" onblur="validate(7)">
+                            </div>
+                        </div>
 
-                    <h5>
-                        <a href="#" id="btn1"> <b> Tüm şartları okudum ve kabul ediyorum. </b></a>
-                    </h5>
+                        <h5>
+                            <a href="#" id="btn1"> <b> Tüm şartları okudum ve kabul ediyorum. </b></a>
+                        </h5>
 
-                    <button type="submit" class="btn btn-primary submit mb-4">Kayıt Ol</button>
+                        <button type="submit" class="btn btn-primary submit mb-4">Kayıt Ol</button>
 
+                        <H5 class="text-right" ><a href="/Login/Index"> Zaten üyeyim</a></H5>
 
-
-                </form>
+                    </form>
                 
             </div>
         </div>
@@ -165,10 +178,11 @@
     function validate(val) {
         v1 = document.getElementById("Name");
         v2 = document.getElementById("Mail");
-        v3 = document.getElementById("Password");
-        v4 = document.getElementById("VerifyPassword");
+        v3 = document.getElementById("password1");
+        v4 = document.getElementById("password2");
         v5 = document.getElementById("Image");
-        v6 = document.getElementById("About");
+        v6 = document.getElementById("City");
+        v7 = document.getElementById("About");
 
         flag1 = true;
         flag2 = true;
@@ -176,6 +190,7 @@
         flag4 = true;
         flag5 = true;
         flag6 = true;
+        flag7 = true;
 
         if (val >= 1 || val == 0) {
             if (v1.value == "") {
@@ -198,6 +213,7 @@
                 flag2 = true;
             }
         }
+
         if (val >= 3 || val == 0) {
             if (v3.value == "") {
                 v3.style.borderColor = "red";
@@ -208,6 +224,7 @@
                 flag3 = true;
             }
         }
+
         if (val >= 4 || val == 0) {
             if (v4.value == "") {
                 v4.style.borderColor = "red";
@@ -218,6 +235,7 @@
                 flag4 = true;
             }
         }
+
         if (val >= 5 || val == 0) {
             if (v5.value == "") {
                 v5.style.borderColor = "red";
@@ -228,6 +246,7 @@
                 flag5 = true;
             }
         }
+
         if (val >= 6 || val == 0) {
             if (v6.value == "") {
                 v6.style.borderColor = "red";
@@ -239,7 +258,18 @@
             }
         }
 
-        flag = flag1 && flag2 && flag3 && flag4 && flag5 && flag6;
+        if (val >= 7 || val == 0) {
+            if (v7.value == "") {
+                v7.style.borderColor = "red";
+                flag7 = false;
+            }
+            else {
+                v7.style.borderColor = "green";
+                flag7 = true;
+            }
+        }
+
+        flag = flag1 && flag2 && flag3 && flag4 && flag5 && flag6 && flag7;
 
         return flag;
     }
