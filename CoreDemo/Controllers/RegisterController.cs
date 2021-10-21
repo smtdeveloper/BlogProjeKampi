@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules.FluentValidation;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -24,19 +26,37 @@ namespace CoreDemo.Controllers
         [HttpPost]
         public IActionResult Index(Writer writer, string passwordAgain, string cities)
         {
-            if (  writer.Password == passwordAgain)
+            WriterValidator wv = new WriterValidator();
+            ValidationResult result = wv.Validate(writer);
+            if (result.IsValid)
             {
+                if (writer.Password == passwordAgain)
+                {
 
-                writer.Status = true;
-                wm.Add(writer);
-                return RedirectToAction("Index", "Blog");
+                    writer.Status = true;
+                    wm.Add(writer);
+                    return RedirectToAction("Index", "Blog");
+                }
+                else
+                {
+                    ModelState.AddModelError("Password", "Girdiğiniz Parola Eşleşmedi, Lütfen Tekrar Deneyin");
+                }
+                return View();
             }
-
             else
             {
-                ModelState.AddModelError("Password", "Girdiğiniz Parola Eşleşmedi, Lütfen Tekrar Deneyin");
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
             }
+
             return View();
+
+
+
+
+           
 
         }
         public List<SelectListItem> GetCityList()

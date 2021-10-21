@@ -34,43 +34,60 @@
 
                     @foreach (var item in Model)
                     {
-                        <div class="blog-grid-top">
-                            <div class="b-grid-top">
-                                <div class="blog_info_left_grid">
-                                    <a href="single.html">
-                                        <img src="~/web/images/b1.jpg" class="img-fluid" alt="">
-                                    </a>
-                                </div>
-                                <div class="blog-info-middle">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <i class="far fa-calendar-alt"></i> @(((DateTime)item.CreateDate).ToString("dd-MMM-yyyy"))
-                                            </a>
-                                        </li>
-                                        <li class="mx-2">
-                                            <a href="#">
-                                                <i class="far fa-thumbs-up"></i> 0 Likes
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="far fa-comment"></i> 0 Comments
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </div>
+                    <div class="blog-grid-top">
+                        <div class="b-grid-top">
+                            <div class="blog_info_left_grid">
+                                <a href="single.html">
+                                    <img src="~/web/images/b1.jpg" class="img-fluid" alt="">
+                                </a>
                             </div>
+                            <div class="blog-info-middle">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="far fa-calendar-alt"></i> @(((DateTime)item.CreateDate).ToString("dd-MMM-yyyy"))
+                                        </a>
+                                    </li>
+                                    <li class="mx-2">
+                                        <a href="#">
+                                            <i class="far fa-thumbs-up"></i> 0 Likes
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="far fa-comment"></i> 0 Comments
+                                        </a>
+                                    </li>
 
-                            <h3>
-                                <a href="single.html"> @item.Title</a>
-                            </h3>
-                            <p>
-                                @item.Content
-                            </p>
-                            <a href="/blog/Index/" class="btn btn-primary read-m"> Blog Listesi</a>
+                                </ul>
+                            </div>
                         </div>
+
+                        
+                        <a target="_blank" href="https://www.instagram.com/smtcoder/">
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>Reklam !</strong> Samet Akca - Yazılım Geliştirici 👨‍💻 Takip Et
+
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </a>
+                        <div class="jumbotron alert-success">
+                            <h1 class="display-4 text-dark"> <b>  @item.Title </b> </h1>
+                            
+                            <hr class="my-4">
+                            <h5>It uses utility classes for typography and spacing to space content out within the larger container.</h5>
+                            
+                        </div>
+
+                        <br />
+
+                        <h5>
+                            @item.Content
+                        </h5>
+                        <a href="/blog/Index/" class="btn btn-success">  Diğer Bloglar </a>
+                    </div>
 
                     }
 
@@ -85,70 +102,23 @@
 
                     @*@await Html.PartialAsync("~/Views/Comment/CommentListByBlog.cshtml")*@
 
-                    @await Html.PartialAsync("~/Views/Comment/PartialAddComment.cshtml")
+                    @await Html.PartialAsync("~/Views/Comment/PartialAddComment.cshtml" , new { id = ViewBag.c })
 
                 </div>
 
                 <!--//left-->
                 <!--right-->
                 <aside class="col-lg-4 agileits-w3ls-right-blog-con text-right">
-                    <div class="right-blog-info text-left">
-                        <div class="tech-btm">
-                            <img src="~/web/images/banner1.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="tech-btm">
-                            <h4>Sign up to our newsletter</h4>
-                            <p>Pellentesque dui, non felis. Maecenas male </p>
-                            <form action="#" method="post">
-                                <input type="email" placeholder="Email" required="">
-                                <input type="submit" value="Subscribe">
-                            </form>
 
-                        </div>
+                    <div class="right-blog-info text-left">
+
+                        @await Html.PartialAsync("~/Views/NewsLetter/SubscribeMail.cshtml")
+                        
 
                         @await Component.InvokeAsync("CategoryList")
 
-                        <div class="tech-btm">
-                            <h4>Yazarın Diğer Yazıları</h4>
+                    @await Component.InvokeAsync("WriterLastBlog")
 
-                            <div class="blog-grids row mb-3">
-                                <div class="col-md-5 blog-grid-left">
-                                    <a href="single.html">
-                                        <img src="~/web/images/1.jpg" class="img-fluid" alt="">
-                                    </a>
-                                </div>
-                                <div class="col-md-7 blog-grid-right">
-
-                                    <h5>
-                                        <a href="single.html">Pellentesque dui, non felis. Maecenas male non felis </a>
-                                    </h5>
-                                    <div class="sub-meta">
-                                        <span>
-                                            <i class="far fa-clock"></i> 20 Jan, 2018
-                                        </span>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="blog-grids row mb-3">
-                                <div class="col-md-5 blog-grid-left">
-                                    <a href="single.html">
-                                        <img src="~/web/images/6.jpg" class="img-fluid" alt="">
-                                    </a>
-                                </div>
-                                <div class="col-md-7 blog-grid-right">
-                                    <h5>
-                                        <a href="single.html">Pellentesque dui, non felis. Maecenas male non felis </a>
-                                    </h5>
-                                    <div class="sub-meta">
-                                        <span>
-                                            <i class="far fa-clock"></i> 20 Feb, 2018
-                                        </span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
                         <div class="single-gd my-5 tech-btm">
                             <h4> İlerlememiz </h4>
                             <div class="progress">

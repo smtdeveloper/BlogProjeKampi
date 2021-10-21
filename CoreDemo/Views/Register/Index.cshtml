@@ -1,5 +1,5 @@
-﻿
-@model EntityLayer.Concrete.Writer
+﻿@model EntityLayer.Concrete.Writer
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/UserLayout.cshtml";
@@ -18,7 +18,7 @@
         color: #000;
         overflow-x: hidden;
         height: 100%;
-       /* background-image: url("https://i.imgur.com/GMmCQHC.png");*/
+        /* background-image: url("https://i.imgur.com/GMmCQHC.png");*/
         background-repeat: no-repeat;
         background-size: 100% 100%
     }
@@ -88,81 +88,94 @@
             <h1> Kayıt Ol </h1>
 
             <div class="card">
-               
-                    <h5 class="text-center mb-4">Blog Yazarı olmak için hemen kayıt ol :)</h5>
-                    <form method="post" class="form-card">
 
-                        <div class="row justify-content-between text-left">
+                <h5 class="text-center mb-4">Blog Yazarı olmak için hemen kayıt ol :)</h5>
+                @using (Html.BeginForm("Index", "Register", FormMethod.Post))
+                {
+                    <div class="row justify-content-between text-left">
 
-                            <div class="form-group col-sm-6 flex-column d-flex">
-                                <label class="form-control-label px-3">Ad Soyad<span class="text-danger"> *</span></label>
-                                <input type="text" id="Name" name="Name" placeholder="Ad Soyad Giriniz" onblur="validate(1)">
-                            </div>
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3">Ad Soyad<span class="text-danger"> *</span></label>
+                            @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @id = "validationDefault01", @placeholder = "Adınızı Giriniz", @required = "" })
+                            @*@Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })*@
 
-                            <div class="form-group col-sm-6 flex-column d-flex">
-                                <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label>
-                                <input type="email" id="Mail" name="Mail" placeholder="Email Giriniz" onblur="validate(2)">
-                            </div>
+                            @*<input type="text" id="Name" name="Name" placeholder="Ad Soyad Giriniz" onblur="validate(1)">*@
                         </div>
 
-                        <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label>
+                            @Html.TextBoxFor(x => x.Mail, new { @class = "form-control", @id = "validationDefault02", @placeholder = "Mail Adresinizi Giriniz", @required = "" })
+                            @*@Html.ValidationMessageFor(x => x.Mail, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
 
-                            <div class="form-group col-sm-6 flex-column d-flex">
-                                <label class="form-control-label px-3">Parola<span class="text-danger"> *</span></label>
-                                @Html.PasswordFor(x => x.Password, new { @class = "form-control", @id = "password1", @name = "password1", @placeholder = "Parola Giriniz", @required = "" })
-                                @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
-                            </div>
+                    <div class="row justify-content-between text-left">
 
-                            <div class="form-group col-sm-6 flex-column d-flex">
-                                <label class="form-control-label px-3">Parolayı Doğrula<span class="text-danger"> *</span></label>
-                                <input type="password" name="PasswordAgain" class="form-control" id="password2" placeholder="Parolayı Tekrar Giriniz" required="" />
-                            </div>
-
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3">Parola<span class="text-danger"> *</span></label>
+                            @Html.PasswordFor(x => x.Password, new { @class = "form-control", @id = "password1", @placeholder = "Şifre Giriniz", @required = "" })
+                            @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
                         </div>
 
-                        <div class="row justify-content-between text-left">
-                            <div class="form-group col-sm-6 flex-column d-flex">
-                                <label class="form-control-label px-3">Resim Yolu :)<span class="text-danger"> *</span></label>
-                                <input type="text" id="Image" name="Image" placeholder="Simdilik dosya yolu ile..." onblur="validate(5)">
-                            </div>
-                            <div class="form-group col-sm-6 flex-column d-flex">
-                                <label class="form-control-label px-3"> Şehir / İlçe <span class="text-danger"> *</span></label>
-
-                                @*@Html.DropDownList("cities", (ViewBag.Cities), "Şehir Seçiniz", new { @class = "form-control dropdown ", @id = "City", @name = "City", })*@
-                                <input type="text" id="City" name="City" placeholder="Şehir / İlçe Giriniz" onblur="validate(6)">
-                            </div>
-                        </div>
-                        <div class="row justify-content-between text-left">
-                            <div class="form-group col-sm-6 flex-column d-flex">
-                                <label class="form-control-label px-3"> Telefon </label>
-                                <input type="text" id="Phone" name="Phone" placeholder="05...">
-                            </div>
-                            <div class="form-group col-sm-6 flex-column d-flex">
-                                <label class="form-control-label px-3">Cinsiyet <span class="text-danger"> *</span></label>
-                                <div>
-                                    <input type="radio" name="Gender" value="Kadın"> Kadın
-                                    <input type="radio" name="Gender" value="Erkek"> Erkek
-                                    <input type="radio" name="Gender" value="Bilinmeyen"> Bilinmeyen
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row justify-content-between text-left">
-                            <div class="form-group col-12 flex-column d-flex">
-                                <label class="form-control-label px-3">Hakkınızda<span class="text-danger"> *</span></label>
-                                <input type="text" id="About" name="About" placeholder="Bio" onblur="validate(7)">
-                            </div>
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3">Parolayı Doğrula<span class="text-danger"> *</span></label>
+                            <input type="password" name="PasswordAgain" class="form-control" id="password2" placeholder="Şifrenizi Tekrar Giriniz" required="" />
                         </div>
 
-                        <h5>
-                            <a href="#" id="btn1"> <b> Tüm şartları okudum ve kabul ediyorum. </b></a>
-                        </h5>
+                    </div>
 
-                        <button type="submit" class="btn btn-primary submit mb-4">Kayıt Ol</button>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3">Resim Yolu :)<span class="text-danger"> *</span></label>
+                            @Html.TextBoxFor(x => x.Image)
+                         
+                        </div>
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3"> Şehir / İlçe <span class="text-danger"> *</span></label>
 
-                        <H5 class="text-right" ><a href="/Login/Index"> Zaten üyeyim</a></H5>
 
-                    </form>
-                
+                            @Html.TextBoxFor(x => x.City, new { @class = "form-control", @id = "City", @placeholder = "Sehir / ilçe  Giriniz", @required = "" })
+                            @*@Html.ValidationMessageFor(x => x.City, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3"> Telefon </label>
+                            @Html.TextBoxFor(x => x.Phone)
+                           
+                        </div>
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3">Cinsiyet</label>
+                            <div>
+                                <input type="radio" name="Gender" value="Kadın"> Kadın
+                                <input type="radio" name="Gender" value="Erkek"> Erkek
+                             
+                            </div>
+                            @*@Html.RadioButtonFor(model => model.Gender, "Kadın") @Html.Label("Kadın")
+                                @Html.RadioButtonFor(model => model.Gender, "Erkek") @Html.Label("Erkek")
+
+                                @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })*@
+
+                        </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-12 flex-column d-flex">
+                            <label class="form-control-label px-3">Hakkınızda<span class="text-danger"> *</span></label>
+                            @Html.TextBoxFor(x => x.About, new { @class = "form-control", @id = "City", @placeholder = "Sehir / ilçe  Giriniz", @required = "" })
+                            @*@Html.ValidationMessageFor(x => x.About, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+
+                    <h5>
+                        <a href="#" id="btn1"> <b> Tüm şartları okudum ve kabul ediyorum. </b></a>
+                    </h5>
+
+                    <button type="submit" class="btn btn-primary submit mb-4">Kayıt Ol</button>
+
+                    <H5 class="text-right"><a href="/Login/Index"> Zaten üyeyim</a></H5>
+
+                }
+
             </div>
         </div>
     </div>
@@ -176,8 +189,8 @@
     });
 
     function validate(val) {
-        v1 = document.getElementById("Name");
-        v2 = document.getElementById("Mail");
+        v1 = document.getElementById("validationDefault01");
+        v2 = document.getElementById("validationDefault02");
         v3 = document.getElementById("password1");
         v4 = document.getElementById("password2");
         v5 = document.getElementById("Image");
