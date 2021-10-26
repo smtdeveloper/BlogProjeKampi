@@ -4,6 +4,7 @@ using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace CoreDemo.Controllers
 {
+   
     public class LoginController : Controller
     {
         [AllowAnonymous]
@@ -26,18 +28,11 @@ namespace CoreDemo.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index(Writer writer)
         {
-
             Context c = new Context();
             var datavalue = c.Writers.FirstOrDefault(x => x.Mail == writer.Mail && x.Password == writer.Password);
             if (datavalue != null)
             {
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name,writer.Mail)
-                };
-                var useridentity = new ClaimsIdentity(claims, "a");
-                ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
-                await HttpContext.SignInAsync(principal);
+                HttpContext.Session.SetString("username", writer.Mail);
                 return RedirectToAction("Index", "Writer");
             }
             else

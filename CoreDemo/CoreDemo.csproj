@@ -22,8 +22,4 @@
     <ProjectReference Include="..\EntityLayer\EntityLayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Error1\" />
-  </ItemGroup>
-
 </Project>

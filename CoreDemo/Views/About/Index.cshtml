@@ -1,0 +1,79 @@
+﻿@using EntityLayer.Concrete
+@model List<About>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- About ındex -->
+
+</head>
+
+<body>
+
+
+
+    <section class="main-content-w3layouts-agileits">
+        <div class="container">
+            <h3 class="tittle"> Hakkımızda </h3>
+            <div class="row inner-sec">
+
+                <!--left-->
+                <div class="col-lg-8 left-blog-info-w3layouts-agileits text-left">
+                    <div class="blog-grid-top">
+
+                        <div class="blog_info_left_grid">
+                            <a href="single.html">
+                                <img src="~/web/images/b5.jpg" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <br />
+                        <h4> "Hakkımızda" sayfanızı yapılandırın </h4>
+                        <br />
+                        @foreach (var item in Model)
+                        {
+                            <h6>@item.Details1</h6>
+                        }
+                        <a href="single.html" class="btn btn-primary read-m">Read More</a>
+                    </div>
+
+                </div>
+                <!--//left-->
+                <!--right-->
+                <aside class="col-lg-4 agileits-w3ls-right-blog-con text-right">
+                    <div class="right-blog-info text-left">
+
+                        @await Html.PartialAsync("~/Views/NewsLetter/SubscribeMail.cshtml")
+
+
+                        @await Html.PartialAsync("~/Views/About/SocialMediaAbout.cshtml")
+
+                        <div class="tech-btm">
+                            <h4>Son  Postlar</h4>
+
+                            @await Component.InvokeAsync("WriterLastBlog")
+
+                        </div>
+                    </div>
+
+                </aside>
+                <!--//right-->
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

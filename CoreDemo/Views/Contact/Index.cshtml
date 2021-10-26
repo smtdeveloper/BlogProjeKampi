@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<head>
+    <title>İletişim Sayfası</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Weblog a Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <link href="~/web/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="~/web/css/contact.css" rel='stylesheet' type='text/css' />
+    <link href="~/web/css/style.css" rel='stylesheet' type='text/css' />
+    <link href="~/web/css/fontawesome-all.css" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
+          rel="stylesheet">
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Contact ındex -->
+
+</head>
+
+<body>
+    <!--/main-->
+    <section class="main-content-w3layouts-agileits">
+
+        <h3 class="tittle">Bizimle İletişime Geçin</h3>
+        <h6 class="sub text-center"> <b> Düşünceleriniz bizim için değerli </b> </h6>
+        <div class="contact-map inner-sec">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3006.8498136890335!2d29.091507951195005!3d41.0941279791906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cacbb53cf607ed%3A0xcec679a0b64f15df!2zQmV5a296IMOcbml2ZXJzaXRlc2kgxLBuZ2lsaXpjZSBIYXrEsXJsxLFrIE9rdWx1IEthdmFjxLFrIFllcmxlxZ9rZXNp!5e0!3m2!1str!2str!4v1635250639831!5m2!1str!2str" width="850" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div class="ad-inf-sec bg-light">
+            <div class="container">
+                <div class="address row">
+
+                    <div class="col-lg-4 address-grid">
+                        <div class="row address-info">
+                            <div class="col-md-4 address-left text-center">
+                                <i class="far fa-map"></i>
+                            </div>
+                            <div class="col-md-8 address-right text-left">
+                                <h6>Address</h6>
+                                <p>
+                                    Beykoz Üniversitesi, İngilizce Hazırlık
+
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-4 address-grid">
+                        <div class="row address-info">
+                            <div class="col-md-4 address-left text-center">
+                                <i class="far fa-envelope"></i>
+                            </div>
+                            <div class="col-md-8 address-right text-left">
+                                <h6>Email</h6>
+                                <p>
+                                    <a href="mailto:smtakca99@gmail.com"> smtakca99@gmail.com</a>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 address-grid">
+                        <div class="row address-info">
+                            <div class="col-md-4 address-left text-center">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="col-md-8 address-right text-left">
+                                <h6>Phone</h6>
+                                <p>+90 555 555 55 55</p>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="contact_grid_right">
+                <form method="post">
+                    <div class="row contact_left_grid">
+                        <div class="col-md-6 con-left">
+                            <div class="form-group">
+                                <label for="validationCustom01 my-2">Adınız</label>
+                                <input class="form-control" type="text" name="UserName" placeholder="Adınızı Yazınız" required="">
+                                @Html.ValidationMessage("UserName", "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Email</label>
+                                <input class="form-control" type="email" name="Mail" placeholder="Email adresinizi yazınız" required="">
+                                @Html.ValidationMessage("Mail", "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="validationCustom03 my-2">Mesajın Konusu</label>
+                                <input class="form-control" type="text" name="Subject" placeholder="Mesajın Konusunu Yazınız" required="">
+                                @Html.ValidationMessage("Subject", "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 con-right">
+                            <div class="form-group">
+                                <label for="textarea">Mesajınız</label>
+                                <textarea id="textarea" name="Message" placeholder="Mesajınızı Yazınız"></textarea>
+                                @Html.ValidationMessage("Message", "", new { @class = "text-danger" })
+                            </div>
+                            <input class="form-control" type="submit" value="Gönder">
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</body>

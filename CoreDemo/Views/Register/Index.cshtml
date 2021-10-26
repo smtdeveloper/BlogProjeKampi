@@ -18,7 +18,8 @@
         color: #000;
         overflow-x: hidden;
         height: 100%;
-        /* background-image: url("https://i.imgur.com/GMmCQHC.png");*/
+        background-image: url("https://i.imgur.com/GMmCQHC.png");
+        background-color: ghostwhite;
         background-repeat: no-repeat;
         background-size: 100% 100%
     }
@@ -141,7 +142,7 @@
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-6 flex-column d-flex">
                             <label class="form-control-label px-3"> Telefon </label>
-                            @Html.TextBoxFor(x => x.Phone)
+                            @Html.TextBoxFor(x => x.Phone, new { @placeholder = "05..." })
                            
                         </div>
                         <div class="form-group col-sm-6 flex-column d-flex">
@@ -161,7 +162,7 @@
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-12 flex-column d-flex">
                             <label class="form-control-label px-3">Hakkınızda<span class="text-danger"> *</span></label>
-                            @Html.TextBoxFor(x => x.About, new { @class = "form-control", @id = "City", @placeholder = "Sehir / ilçe  Giriniz", @required = "" })
+                            @Html.TextBoxFor(x => x.About, new { @class = "form-control", @id = "City", @placeholder = "Bio...", @required = "" })
                             @*@Html.ValidationMessageFor(x => x.About, "", new { @class = "text-danger" })*@
                         </div>
                     </div>
