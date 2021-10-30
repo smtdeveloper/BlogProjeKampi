@@ -20,5 +20,17 @@ namespace CoreDemo.Controllers
         {
             return View();
         }
+
+        [AllowAnonymous]
+        public IActionResult WriterNavbarPartial()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public IActionResult WriterFooterPartial()
+        {
+            return View();
+        }
     }
 }
