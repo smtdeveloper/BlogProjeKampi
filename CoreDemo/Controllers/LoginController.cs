@@ -32,7 +32,13 @@ namespace CoreDemo.Controllers
             var datavalue = c.Writers.FirstOrDefault(x => x.Mail == writer.Mail && x.Password == writer.Password);
             if (datavalue != null)
             {
-                HttpContext.Session.SetString("username", writer.Mail);
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name,writer.Mail)
+                };
+                var useridentity = new ClaimsIdentity(claims, "key");
+                ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
+                await HttpContext.SignInAsync(principal);
                 return RedirectToAction("Index", "Writer");
             }
             else
@@ -42,3 +48,15 @@ namespace CoreDemo.Controllers
         }
     }
 }
+
+//Context c = new Context();
+//var datavalue = c.Writers.FirstOrDefault(x => x.Mail == writer.Mail && x.Password == writer.Password);
+//if (datavalue != null)
+//{
+//    HttpContext.Session.SetString("username", writer.Mail);
+//    return RedirectToAction("Index", "Writer");
+//}
+//else
+//{
+//    return View();
+//}

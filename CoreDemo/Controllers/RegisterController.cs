@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace CoreDemo.Controllers
 {
-    [AllowAnonymous]
+  
     public class RegisterController : Controller
     {
        WriterManager wm = new WriterManager(new EfWriterRepository());

@@ -11,7 +11,7 @@ namespace CoreDemo.ViewComponents.Blog
     public class WriterLastBlog : ViewComponent
     {
        BlogManager bm = new BlogManager(new EfBlogRepository());
-        public IViewComponentResult Invoke(int id)
+        public IViewComponentResult Invoke()
         {
             var values = bm.GetBlogsListWithWriter(19);
             return View(values);
