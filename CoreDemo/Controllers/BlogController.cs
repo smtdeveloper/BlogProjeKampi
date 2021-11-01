@@ -27,5 +27,12 @@ namespace CoreDemo.Controllers
             return View(result);
         }
 
+        public IActionResult GetBlogListByWriter()
+        {
+            var result =  bm.GetBlogsListWithWriter(19);
+            return View(result);
+        }
+
+
     }
 }

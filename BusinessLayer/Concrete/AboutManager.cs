@@ -23,5 +23,25 @@ namespace BusinessLayer.Concrete
         {
             return _aboutDal.GetAll();
         }
+
+        public About GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TAdd(About entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TDelete(About entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TUpdate(About entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

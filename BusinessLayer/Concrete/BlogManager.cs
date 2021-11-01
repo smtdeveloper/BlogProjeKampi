@@ -17,15 +17,6 @@ namespace BusinessLayer.Concrete
         {
             _blogDal = blogDal;
         }
-        public void Add(Blog blog)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(Blog blog)
-        {
-            throw new NotImplementedException();
-        }
 
         public List<Blog> GetAll()
         {
@@ -57,7 +48,17 @@ namespace BusinessLayer.Concrete
             throw new NotImplementedException();
         }
 
-        public void Update(Blog blog)
+        public void TAdd(Blog entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TDelete(Blog entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TUpdate(Blog entity)
         {
             throw new NotImplementedException();
         }
