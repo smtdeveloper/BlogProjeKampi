@@ -29,7 +29,7 @@
                             <td class="py-1">@item.BlogId </td>
                             <td> <b> @item.Title </b>  </td>
                             <td> @(((DateTime)item.CreateDate).ToString("dd MMMM yyyy"))</td>
-                            <td> @item.CategoryId </td>
+                            <td> @item.Category.Name</td>
                             <td> @item.Status </td>
                             <td><a href="#" class="btn btn-outline-danger">Sil</a></td>
                             <td><a href="#" class="btn btn-outline-warning">Güncelle</a></td>

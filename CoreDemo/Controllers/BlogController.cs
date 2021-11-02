@@ -29,7 +29,7 @@ namespace CoreDemo.Controllers
 
         public IActionResult GetBlogListByWriter()
         {
-            var result =  bm.GetBlogsListWithWriter(19);
+            var result =  bm.GetBlogsListWithWriter(20);
             return View(result);
         }
 
