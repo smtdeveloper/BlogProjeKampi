@@ -14,7 +14,11 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Blog ındex -->
 
-
+<style>
+    body {
+        background-color: whitesmoke ;
+    }
+</style>
 
 <section class="main-content-w3layouts-agileits">
     <div class="container">
@@ -27,23 +31,23 @@
                     {
                         <div class="col-lg-4 card">
                             <a href="/blog/BlogReadAll/@item.BlogId/">
-                                <img src="@item.Image" class="card-img-top img-fluid" alt="">
+                                <img src="@item.Image"  class="card-img-top img-fluid m-2" alt="">
                             </a>
                             <div class="card-body">
-                                <ul class="blog-icons my-4">
+                                <ul class="blog-icons my-3">
                                     <li>
                                         <a href="#">
                                             <i class="far fa-calendar-alt"></i>@(((DateTime)item.CreateDate).ToString("dd-MMM-yyyy"))
                                         </a>
                                     </li>
-                                    <li class="mx-2">
+                                    <li class="mx-1 my-1">
                                         <a href="#">
                                             <i class="far fa-comment"></i> 0
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="fas fa-eye"></i> @item.Category.Name
+                                            <i class="fas fa-align-justify"></i> @item.Category.Name
                                         </a>
                                     </li>
 
@@ -53,8 +57,7 @@
                                     <a href="/blog/BlogReadAll/@item.BlogId/"> @item.Title </a>
 
                                 </h5>
-                                <p>Blog id : @item.BlogId </p>
-                                <p class="card-text mb-3"> @item.Content.Substring(0, item.Content.Substring(0, 80).LastIndexOf(" "))... </p>
+                                <h6 class="card-text mb-3"> @item.Content.Substring(0, item.Content.Substring(0, 80).LastIndexOf(" "))... </h6>
                                 <a href="/blog/BlogReadAll/@item.BlogId/" class="btn btn-primary read-m">Devamını Oku...</a>
                             </div>
                         </div>
