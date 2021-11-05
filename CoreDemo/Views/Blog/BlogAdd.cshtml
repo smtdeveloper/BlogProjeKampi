@@ -1,0 +1,38 @@
+﻿@model EntityLayer.Concrete.Blog
+
+@{
+    ViewData["Title"] = "BlogAdd";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<h1>Blog Ekleme Sayfası</h1>
+<br />
+
+@using (Html.BeginForm("BlogAdd", "Blog", FormMethod.Post))
+{
+    @Html.Label("Blog Başlığını Giriniz")
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Title, "", new { @class = "text-success" })
+    <br />
+    <br />
+    @Html.Label("Blog Görselini Giriniz")
+    @Html.TextBoxFor(x => x.Image, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Image, "", new { @class = "text-success" })
+    <br />
+    <br />
+    @Html.Label("Blog Küçük Görselini Giriniz")
+    @Html.TextBoxFor(x => x.ThumbnailImage, new { @class = "form-control" })
+    <br />
+    <br />
+    @Html.Label("Blog Kategorisini Giriniz")
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
+
+    <br />
+    <br />
+    @Html.Label("Blog İçeriğini Giriniz!")
+    @Html.TextAreaFor(x => x.Content, 15, 3, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Content, "", new { @class = "text-success" })
+    <br />
+    <br />
+    <button class="btn btn-outline-success">Kaydet</button>
+}
