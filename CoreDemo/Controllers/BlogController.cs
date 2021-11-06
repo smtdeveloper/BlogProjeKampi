@@ -41,15 +41,19 @@ namespace CoreDemo.Controllers
         [HttpGet]
         public IActionResult BlogAdd()
         {
-            List<SelectListItem> categoryValues = (from x in cm.GetAll()
+            List<SelectListItem> categoryValues = (from x in cm.TGetAll()
                                                    select new SelectListItem
                                                    {
                                                        Text = x.Name,
                                                        Value = x.CategoryId.ToString()
                                                    }).ToList();
-            ViewBag.cv = categoryValues;
+            ViewBag.name = categoryValues;
+
             return View();
         }
+
+       
+
         [HttpPost]
         public IActionResult BlogAdd(Blog blog)
         {
@@ -74,7 +78,13 @@ namespace CoreDemo.Controllers
             return View();
         }
 
-
+      
+        public IActionResult BlogDelete(int id)
+        {
+            var value =  bm.TGetById(id);
+            bm.TDelete(value);
+            return RedirectToAction("GetBlogListByWriter");
+        }
        
 
     }

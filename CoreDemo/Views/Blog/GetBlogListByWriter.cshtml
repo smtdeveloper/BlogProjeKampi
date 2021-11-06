@@ -25,19 +25,26 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td class="py-1">@item.BlogId </td>
-                            <td> <b> @item.Title </b>  </td>
-                            <td> @(((DateTime)item.CreateDate).ToString("dd MMMM yyyy"))</td>
-                            <td> @item.Category.Name</td>
-                            <td> @item.Status </td>
-                            <td><a href="#" class="btn btn-outline-danger">Sil</a></td>
-                            <td><a href="#" class="btn btn-outline-warning">Güncelle</a></td>
-                        </tr>
+                    <tr>
+                        <td class="py-1">@item.BlogId </td>
+                        <td> <b> @item.Title </b>  </td>
+                        <td> @(((DateTime)item.CreateDate).ToString("dd MMMM yyyy"))</td>
+                        <td> @item.Category.Name</td>
+                        <td>  @if (item.Status)
+                        {<span class="badge badge-success">Aktif</span> }
+                        else
+                        { <span class="badge badge-secondary">Pasif</span>} </td>
+                        <td>@Html.ActionLink("Sil", "BlogDelete", new { id = item.BlogId }, new { @class = "btn btn-outline-danger", onclick = "return confirm('Silmek İstediğinize Eminmisiniz?')" })</td>
+                        <td><a href="#" class="btn btn-outline-warning">Güncelle</a></td>
+                    </tr>
                     }
+
+
 
                 </tbody>
             </table>
+
+            
             <br /> <br />
             <a href="/blog/BlogAdd/" class="btn btn-success"> <h6> Yeni Blog Oluştur </h6> </a>
         </div>

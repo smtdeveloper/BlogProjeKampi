@@ -14,7 +14,7 @@ namespace CoreDemo.Controllers
 
         public IActionResult Index()
         {
-            var values = cm.GetAll();
+            var values = cm.TGetAll();
             return View(values);
         }
     }
