@@ -24,6 +24,17 @@ namespace CoreDemo.Controllers
             return View(result);
         }
 
+        public void GetCategoryList()
+        {
+            List<SelectListItem> categoryValues = (from x in cm.TGetAll()
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.Name,
+                                                       Value = x.CategoryId.ToString()
+                                                   }).ToList();
+            ViewBag.cv = categoryValues;
+        }
+
         public IActionResult BlogReadAll(int id)
         {
             ViewBag.i = id;
@@ -41,13 +52,14 @@ namespace CoreDemo.Controllers
         [HttpGet]
         public IActionResult BlogAdd()
         {
+
             List<SelectListItem> categoryValues = (from x in cm.TGetAll()
                                                    select new SelectListItem
                                                    {
                                                        Text = x.Name,
                                                        Value = x.CategoryId.ToString()
                                                    }).ToList();
-            ViewBag.name = categoryValues;
+            ViewBag.cv = categoryValues;
 
             return View();
         }
@@ -74,7 +86,14 @@ namespace CoreDemo.Controllers
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
-            
+
+            List<SelectListItem> categoryValues = (from x in cm.TGetAll()
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.Name,
+                                                       Value = x.CategoryId.ToString()
+                                                   }).ToList();
+            ViewBag.cv = categoryValues;
             return View();
         }
 
@@ -85,7 +104,43 @@ namespace CoreDemo.Controllers
             bm.TDelete(value);
             return RedirectToAction("GetBlogListByWriter");
         }
-       
+
+        [HttpGet]
+        public IActionResult BlogEdit(int id)
+        {
+            var value = bm.TGetById(id);
+            List<SelectListItem> categoryValues = (from x in cm.TGetAll()
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.Name,
+                                                       Value = x.CategoryId.ToString()
+                                                   }).ToList();
+            ViewBag.cv = categoryValues;
+            return View(value);
+        }
+
+        [HttpPost]
+        public IActionResult BlogEdit(Blog blog)
+        {
+
+            blog.Status = true;
+            blog.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            blog.WriterId = 20;
+            bm.TUpdate(blog);
+
+           
+            List<SelectListItem> categoryValues = (from x in cm.TGetAll()
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.Name,
+                                                       Value = x.CategoryId.ToString()
+                                                   }).ToList();
+            ViewBag.cv = categoryValues;
+
+            return RedirectToAction("GetBlogListByWriter");
+        }
+
+        
 
     }
 }

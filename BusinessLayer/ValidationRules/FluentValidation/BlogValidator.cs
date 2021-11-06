@@ -16,7 +16,6 @@ namespace BusinessLayer.ValidationRules.FluentValidation
             RuleFor(x => x.Content).NotEmpty().WithMessage("Lütfen Blog İçeriğini Boş Bırakmayınız!");
             RuleFor(x => x.Image).NotEmpty().WithMessage("Lütfen Blog Dosya Yolunu Boş Bırakmayınız!");
             RuleFor(x => x.Title).MaximumLength(150).WithMessage("Lütfen 150 Karakter'den daha az Veri Girişi Yapınız!");
-            RuleFor(x => x.Title).MinimumLength(5).WithMessage("Lütfen 4 Karakter'den daha fazla Veri Girişi Yapınız!");
             RuleFor(x => x.Content).MinimumLength(80).WithMessage("Lütfen 80 Karakter'den daha fazla Veri Girişi Yapınız!");
         }
     }

@@ -25,8 +25,7 @@
     <br />
     <br />
     @Html.Label("Kategorisini Giriniz")
-    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.name, new { @class = "form-control" })
-
+    @Html.DropDownListFor(x => x.CategoryId , (List<SelectListItem>) ViewBag.cv, new {@class = "form-control" })
     <br />
     <br />
     @Html.Label("Blog İçeriğini Giriniz!")

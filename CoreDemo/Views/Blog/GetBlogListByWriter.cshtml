@@ -35,7 +35,7 @@
                         else
                         { <span class="badge badge-secondary">Pasif</span>} </td>
                         <td>@Html.ActionLink("Sil", "BlogDelete", new { id = item.BlogId }, new { @class = "btn btn-outline-danger", onclick = "return confirm('Silmek İstediğinize Eminmisiniz?')" })</td>
-                        <td><a href="#" class="btn btn-outline-warning">Güncelle</a></td>
+                        <td><a href="/Blog/BlogEdit/@item.BlogId" class="btn btn-outline-warning">Güncelle</a></td>
                     </tr>
                     }
 
