@@ -6,6 +6,9 @@
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 
+
+
+
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
@@ -25,18 +28,20 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        <td class="py-1">@item.BlogId </td>
-                        <td> <b> @item.Title </b>  </td>
-                        <td> @(((DateTime)item.CreateDate).ToString("dd MMMM yyyy"))</td>
-                        <td> @item.Category.Name</td>
-                        <td>  @if (item.Status)
-                        {<span class="badge badge-success">Aktif</span> }
-                        else
-                        { <span class="badge badge-secondary">Pasif</span>} </td>
-                        <td>@Html.ActionLink("Sil", "BlogDelete", new { id = item.BlogId }, new { @class = "btn btn-outline-danger", onclick = "return confirm('Silmek İstediğinize Eminmisiniz?')" })</td>
-                        <td><a href="/Blog/BlogEdit/@item.BlogId" class="btn btn-outline-warning">Güncelle</a></td>
-                    </tr>
+                        <tr>
+                            <td class="py-1">@item.BlogId </td>
+                            <td> <b> @item.Title </b>  </td>
+                            <td> @(((DateTime)item.CreateDate).ToString("dd MMMM yyyy"))</td>
+                            <td> @item.Category.Name</td>
+                            <td>
+                                @if (item.Status)
+                                {<span class="badge badge-success">Aktif</span> }
+                                else
+                                { <span class="badge badge-secondary">Pasif</span>}
+                            </td>
+                            <td>@Html.ActionLink("Sil", "BlogDelete", new { id = item.BlogId }, new { @class = "btn btn-outline-danger", onclick = "return confirm('Silmek İstediğinize Emin misiniz ?')" })</td>
+                            <td><a href="/Blog/BlogEdit/@item.BlogId" class="btn btn-outline-warning">Güncelle</a></td>
+                        </tr>
                     }
 
 
@@ -44,9 +49,37 @@
                 </tbody>
             </table>
 
-            
+
             <br /> <br />
             <a href="/blog/BlogAdd/" class="btn btn-success"> <h6> Yeni Blog Oluştur </h6> </a>
         </div>
+
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+           Sil
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Emin misinin ?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                       Blogu silmek istiyor musun !
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">İPTAL</button>
+                        <button type="button" class="btn btn-danger">SİL</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
