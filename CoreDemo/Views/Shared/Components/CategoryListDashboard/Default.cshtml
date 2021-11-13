@@ -1,0 +1,53 @@
+﻿@using EntityLayer.Concrete
+@model List<Category>
+
+
+
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Kategori</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> # </th>
+                                <th> Adı  </th>
+                                <th> Acıklama </th>
+                                <th> Durumu </th>
+                                <th> İşlemler </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var item in Model ) {
+                            <tr>
+                                <td> @item.CategoryId </td>
+                                <td> @item.Name </td>
+                                <td> @item.Description </td>
+                                <td> @if (item.Status) 
+                                      {
+                                       <p class="badge badge-success"> Aktif </p>                                 
+                                      }
+                                      else
+                                      {
+                                        <p class="badge badge-warning"> Pasif </p>
+                                      }
+                                </td>
+                                <td>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

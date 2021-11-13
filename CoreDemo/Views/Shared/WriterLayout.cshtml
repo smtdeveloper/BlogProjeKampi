@@ -18,10 +18,10 @@
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
                 <a class="navbar-brand brand-logo" href="/Writer/index/"><img src="~/web/images/SMTlogo.jpg" alt="logo" /></a>
-                <a class=""  href="/Writer/index/"><img src="~/web/images/smallLogo.jpg" width="60" height="60" alt="logo" /></a>
+                <a class="" href="/Writer/index/"><img src="~/web/images/smallLogo.jpg" width="60" height="60" alt="logo" /></a>
             </div>
             @*<img src="~/web/images/BlogLogo.png" />*@
-           
+
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="mdi mdi-menu"></span>
@@ -92,29 +92,31 @@
                 </button>
             </div>
         </nav>
-      
+
         <div class="container-fluid page-body-wrapper">
-          
+
             @await Html.PartialAsync("~/Views/Writer/WriterNavbarPartial.cshtml")
-        
+
             <div class="main-panel">
                 <div class="content-wrapper">
                     @RenderBody()
                 </div>
-                
+
                 @await Html.PartialAsync("~/Views/Writer/WriterFooterPartial.cshtml")
-               
+
             </div>
-        
+
         </div>
-     
+
     </div>
-   
+
     <script src="~/writer/assets/vendors/js/vendor.bundle.base.js"></script>
     <script src="~/writer/assets/js/off-canvas.js"></script>
     <script src="~/writer/assets/js/hoverable-collapse.js"></script>
     <script src="~/writer/assets/js/misc.js"></script>
-   
+    
+
+
 </body>
 </html>
 

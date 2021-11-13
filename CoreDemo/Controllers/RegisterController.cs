@@ -36,7 +36,7 @@ namespace CoreDemo.Controllers
                 {
 
                     writer.Status = true;
-                    wm.Add(writer);
+                    wm.TAdd(writer);
                     return RedirectToAction("Index", "Blog");
                 }
                 else
