@@ -5,49 +5,56 @@
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
+
+
+                @*@foreach (var item in Model)
+                {
+                    <img src="@item.Image" alt="Alternate Text" />
+                }*@
+
                 <h4 class="card-title">Hakkımda</h4>
                 @foreach (var item in Model)
                 {
-            <div class="d-flex">
-                <div class="d-flex align-items-center mr-4 text-muted font-weight-light">
-                    <i class="mdi mdi-gmail"></i>
-                    <span> @item.Mail  </span>
+                    <div class="d-flex">
+                        <div class="d-flex align-items-center mr-4 text-muted font-weight-light">
+                            <i class="mdi mdi-gmail"></i>
+                            <span> @item.Mail  </span>
 
-                </div>
-                <div class="d-flex align-items-center mr-4 text text-muted font-weight-light">
-                    <span class="mdi mdi-city"></span>
-                    <span>  @item.City</span>
+                        </div>
+                        <div class="d-flex align-items-center mr-4 text text-muted font-weight-light">
+                            <span class="mdi mdi-city"></span>
+                            <span>  @item.City</span>
 
-                </div>
+                        </div>
 
-                <div class="d-flex align-items-center mr-4 text text-muted font-weight-light">
+                        <div class="d-flex align-items-center mr-4 text text-muted font-weight-light">
 
-                    <span>
-                        @if (item.Gender == "Erkek")
-                        {
-                            <i class="mdi mdi-gender-male"> Erkek</i>
-                        }
-                        else if (item.Gender == "Kadın")
-                        {
-                            <i class="mdi mdi-gender-female">Kadın</i>
-                        }
-                        else
-                        {
-                            <i class="mdi mdi-android">android</i>
-                        }
-                    </span>
+                            <span>
+                                @if (item.Gender == "Erkek")
+                                {
+                                    <i class="mdi mdi-gender-male"> Erkek</i>
+                                }
+                                else if (item.Gender == "Kadın")
+                                {
+                                    <i class="mdi mdi-gender-female">Kadın</i>
+                                }
+                                else
+                                {
+                                    <i class="mdi mdi-android">android</i>
+                                }
+                            </span>
 
-                </div>
+                        </div>
 
-                <div class="d-flex align-items-center mr-4 text text-muted font-weight-light">
-                    <i class="mdi mdi-cellphone"></i>
-                    <span>  @item.Phone</span>
+                        <div class="d-flex align-items-center mr-4 text text-muted font-weight-light">
+                            <i class="mdi mdi-cellphone"></i>
+                            <span>  @item.Phone</span>
 
-                </div>
+                        </div>
 
-            </div>
+                    </div>
 
-                    
+
 
                     <div class="d-flex mt-5 align-items-top">
                         <img src="@item.Image" class="img-sm rounded-circle mr-3" alt="image">
