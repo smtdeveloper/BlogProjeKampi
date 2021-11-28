@@ -13,14 +13,14 @@ namespace BusinessLayer.ValidationRules.FluentValidation
     {
         public WriterValidator()
         {
-            RuleFor(x => x.Name).NotEmpty().WithMessage("Ad Soyad Boş Geçilemez");
-            RuleFor(x => x.Mail).NotEmpty().WithMessage("Mail Boş Geçilemez");
-            RuleFor(x => x.Password).NotEmpty().WithMessage("Parola Boş Geçilemez");
-            RuleFor(x => x.City).NotEmpty().WithMessage("Sehir Boş Geçilemez");
-            RuleFor(x => x.About).NotEmpty().WithMessage("Bio Boş Geçilemez");
+            //RuleFor(x => x.Name).NotEmpty().WithMessage("Ad Soyad Boş Geçilemez");
+            //RuleFor(x => x.Mail).NotEmpty().WithMessage("Mail Boş Geçilemez");
+            //RuleFor(x => x.Password).NotEmpty().WithMessage("Parola Boş Geçilemez");
+            //RuleFor(x => x.City).NotEmpty().WithMessage("Sehir Boş Geçilemez");
+            //RuleFor(x => x.About).NotEmpty().WithMessage("Bio Boş Geçilemez");
            
            
-            RuleFor(x => x.Password).Must(IsPasswordValid).WithMessage("Parola en az 6 karakter olmalıdır, en az bir küçük harf bir büyük harf ve rakam olmalıdır");
+            //RuleFor(x => x.Password).Must(IsPasswordValid).WithMessage("Parola en az 6 karakter olmalıdır, en az bir küçük harf bir büyük harf ve rakam olmalıdır");
 
         }
 

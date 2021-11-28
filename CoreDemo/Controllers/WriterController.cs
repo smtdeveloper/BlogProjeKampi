@@ -1,12 +1,13 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules.FluentValidation;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,7 +17,6 @@ namespace CoreDemo.Controllers
     {
 
         WriterManager wm = new WriterManager(new EfWriterRepository());
-
         public IActionResult Index()
         {
             return View();
@@ -30,21 +30,49 @@ namespace CoreDemo.Controllers
 
         [AllowAnonymous]
         [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            var result = wm.TGetById(1);
+            return View(result);
+        }
+        [AllowAnonymous]
+        [HttpPost]
+        public IActionResult ChangePassword(Writer p )
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
         public IActionResult WriterEdit()
         {
-            var result =  wm.TGetById(20);
+            var result =  wm.TGetById(1);
             return View(result);
         }
 
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult WriterEditProfile(Writer p)
+        public IActionResult WriterEdit(Writer p, string passwordAgain)
         {
            
-                p.Status = false;
+            WriterValidator wl = new WriterValidator();
+            ValidationResult results = wl.Validate(p);
+            if (results.IsValid && p.Password == passwordAgain  )
+            {
+                
+
+                p.Status = true;
                 wm.TUpdate(p);
                 return RedirectToAction("Index", "Dashboard");
-             
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
         }
 
         [AllowAnonymous]

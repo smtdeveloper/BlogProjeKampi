@@ -4,90 +4,92 @@
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 
+@using (Html.BeginForm("WriterEdit", "Writer", FormMethod.Post))
+{
+
+    <div class="container">
+        <div class="main-body">
 
 
-<div class="container">
-    <div class="main-body">
 
-       
+            <div class="row gutters-sm">
 
-        <div class="row gutters-sm">
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex flex-column align-items-center text-center">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                            <div class="mt-3">
-                                <h4>John Doe</h4>
-                                <p class="text-secondary mb-1">Full Stack Developer</p>
-                                <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-
-                                <button class="btn btn-outline-primary">Message Kutum</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mt-3">
-                    <ul class="list-group list-group-flush">
-
-                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <a href="#">  <h4 class="text-dark">  <img src="https://img.icons8.com/nolan/64/github.png" />  Github  </h4>  </a>
-                        </li>
-
-                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <a href="#"> <h4 class="text-dark">  <img src="https://img.icons8.com/fluency/48/000000/instagram-new.png" />  Instagram  </h4> </a> 
-                        </li>
-
-                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <a href="#"> <h4 class="text-dark">  <img src="https://img.icons8.com/fluency/48/000000/linkedin.png" />  Linkedin  </h4> </a>  
-                        </li>
-
-                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                           
-                            <a href="#"> <h4 class="text-youtube">  <img src="https://img.icons8.com/color/48/000000/youtube-play.png" />  Youtube  </h4> </a>  
-                        </li>
-
-
-                    </ul>
-                </div>
-
-                <br />
-
-                <div class="">
-                    <div class="card h-100">
+                <div class="col-md-4 mb-2">
+                    <div class="card">
                         <div class="card-body">
-                            <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                            <small>Web Design</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <small>Website Markup</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <small>One Page</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <small>Mobile Template</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <small>Backend API</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                                <div class="mt-3">
+                                    <h4>John Doe</h4>
+                                    <p class="text-secondary mb-1">Full Stack Developer</p>
+                                    <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+
+                                    <button class="btn btn-outline-primary">Message Kutum</button>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="card mt-3">
+                        <ul class="list-group list-group-flush">
+
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <a href="#">  <h4 class="text-dark">  <img src="https://img.icons8.com/nolan/64/github.png" />  Github  </h4>  </a>
+                            </li>
+
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <a href="#"> <h4 class="text-dark">  <img src="https://img.icons8.com/fluency/48/000000/instagram-new.png" />  Instagram  </h4> </a>
+                            </li>
+
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <a href="#"> <h4 class="text-dark">  <img src="https://img.icons8.com/fluency/48/000000/linkedin.png" />  Linkedin  </h4> </a>
+                            </li>
+
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+
+                                <a href="#"> <h4 class="text-youtube">  <img src="https://img.icons8.com/color/48/000000/youtube-play.png" />  Youtube  </h4> </a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+
+                    <br />
+
+                    <div class="">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
+                                <small>Web Design</small>
+                                <div class="progress mb-3" style="height: 5px">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small>Website Markup</small>
+                                <div class="progress mb-3" style="height: 5px">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small>One Page</small>
+                                <div class="progress mb-3" style="height: 5px">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small>Mobile Template</small>
+                                <div class="progress mb-3" style="height: 5px">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small>Backend API</small>
+                                <div class="progress mb-3" style="height: 5px">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-            </div>
 
-         
 
-            <div class="col-md-8">
-                @using (Html.BeginForm("WriterEditProfile", "Writer", FormMethod.Post))
-                {
+                <div class="col-md-8">
+
+
                     <div class="form-group">
                         <H5>Yazar Görsel</H5>
                         <input type="file" name="img[]" class="file-upload-default">
@@ -102,119 +104,160 @@
 
                     <div class="card mb-3">
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <h5 class="mb-0">Ad Soyad </h5>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <h5 class="mb-0">Email </h5>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <h5 class="mb-0">Telefon</h5>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <h5 class="mb-0">Şehir / İlçe</h5>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <h5 class="mb-0">Parola</h5>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <h5 class="mb-0">Parolayı Doğrula</h5>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="password" name="PasswordAgain" class="form-control" id="password2" placeholder="Yeni Şifrenizi Tekrar Giriniz" required="" />
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <h5 class="mb-0">Hakkımda </h5>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    @Html.TextAreaFor(x => x.About, 10, 3, new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <h4 class="mb-0"> Github </h4>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" name="Github" class="form-control" id="Github" placeholder=""  />
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <h4 class="mb-0"> Instagram </h4>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" name="Github" class="form-control" id="Github" placeholder="" />
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <h4 class="mb-0"> Linkedin </h4>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" name="Github" class="form-control" id="Github" placeholder="" />
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <h4 class="mb-0"> YouTube </h4>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" name="Github" class="form-control" id="Github" placeholder="" />
-                                </div>
-                            </div>
-                            <hr>
 
-                            <div class="row">
+                            @Html.HiddenFor(x => x.WriterId, new { @class = "form-control" })
+                            <form class="forms-sample">
+
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h5 class="mb-0">Ad Soyad </h5>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h5 class="mb-0"> Cinsiyet </h5>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.Gender, new { @class = "form-control" })
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <hr />
+
+
+
+                                <div class="row form-group">
+                                    <div class="col-sm-3">
+                                        <h5 class="mb-0">Email </h5>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row form-group">
+                                    <div class="col-sm-3">
+                                        <h5 class="mb-0">Telefon</h5>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row form-group">
+                                    <div class="col-sm-3">
+                                        <h5 class="mb-0">Şehir / İlçe</h5>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <!--   parola -->
+                                <div>
+                                    <div class="row form-group">
+                                        <div class="col-sm-3">
+                                            <h5 class="mb-0">Parola</h5>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="form-group">
+                                                @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h5 class="mb-0">Parolayı Doğrula</h5>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="password" name="PasswordAgain" class="form-control" id="password2" placeholder="Tekrar Giriniz" required="" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row form-group">
+                                    <div class="col-sm-3">
+                                        <h5 class="mb-0">Hakkımda </h5>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <div class="form-group">
+                                            @Html.TextAreaFor(x => x.About, 10, 3, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h4 class="mb-0"> Github </h4>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" name="Github" class="form-control" id="Github" placeholder="" />
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h4 class="mb-0"> Instagram </h4>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" name="Github" class="form-control" id="Github" placeholder="" />
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h4 class="mb-0"> Linkedin </h4>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" name="Github" class="form-control" id="Github" placeholder="" />
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h4 class="mb-0"> YouTube </h4>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" name="Github" class="form-control" id="Github" placeholder="" />
+                                    </div>
+                                </div>
+                                <hr>
+
+
                                 <button type="submit" class="btn btn-gradient-primary mr-2">Güncelle</button>
 
-                            </div>
+
+
+                            </form>
+
                         </div>
                     </div>
-                }
+                    
 
 
 
 
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
+}
