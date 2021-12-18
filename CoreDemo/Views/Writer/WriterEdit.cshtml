@@ -6,13 +6,9 @@
 
 @using (Html.BeginForm("WriterEdit", "Writer", FormMethod.Post))
 {
-
-    <div class="container">
-        <div class="main-body">
-
-
-
+    <div class="main-body">
             <div class="row gutters-sm">
+
 
                 <div class="col-md-4 mb-2">
                     <div class="card">
@@ -21,14 +17,16 @@
                                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                                 <div class="mt-3">
                                     <h4>John Doe</h4>
+                                   
                                     <p class="text-secondary mb-1">Full Stack Developer</p>
                                     <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
 
-                                    <button class="btn btn-outline-primary">Message Kutum</button>
+                                    <a href="#" class="btn btn-outline-primary">Message Kutum</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
                     <div class="card mt-3">
                         <ul class="list-group list-group-flush">
 
@@ -88,26 +86,33 @@
 
 
                 <div class="col-md-8">
-
-
-                    <div class="form-group">
-                        <H5>Yazar Görsel</H5>
-                        <input type="file" name="img[]" class="file-upload-default">
-                        <div class="input-group col-xs-12">
-
-                            <span class="input-group-append">
-                                <button class="file-upload-browse btn btn-gradient-primary" type="button">Profil Resmini Seç</button>
-                            </span>
-                        </div>
-                    </div>
-
-
                     <div class="card mb-3">
                         <div class="card-body">
 
                             @Html.HiddenFor(x => x.WriterId, new { @class = "form-control" })
                             <form class="forms-sample">
 
+                                <div class="col-md-12 text-right">
+                                    <button type="submit" class="btn btn-gradient-primary text-lg-right">   Güncelle  </button>
+                                </div>
+                                <br />
+
+
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h5 class="mb-0">Profil resmi </h5>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <div class="form-group">
+                                            <input type="file" name="Image" />
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+                                <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <h5 class="mb-0">Ad Soyad </h5>
@@ -171,28 +176,30 @@
                                 </div>
                                 <hr>
                                 <!--   parola -->
-                                <div>
+                                @Html.HiddenFor(x => x.Password, new { @class = "form-control" })
+                                <!--<div>
                                     <div class="row form-group">
                                         <div class="col-sm-3">
                                             <h5 class="mb-0">Parola</h5>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
                                             <div class="form-group">
-                                                @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+                                                <label for="exapleInputPassword4"> Şifre  </label>
+
                                             </div>
                                         </div>
-                                    </div>
-                                
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <h5 class="mb-0">Parolayı Doğrula</h5>
-                                        </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            <input type="password" name="PasswordAgain" class="form-control" id="password2" placeholder="Tekrar Giriniz" required="" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
+                                    </div>-->
+
+                                    @*<div class="row">
+                <div class="col-sm-3">
+                    <h5 class="mb-0">Parolayı Doğrula</h5>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    <input type="password" name="PasswordAgain" class="form-control" id="password2" placeholder="Tekrar Giriniz" required="" />
+                </div>
+            </div>*@
+                                <!--</div>-->
+                               
                                 <div class="row form-group">
                                     <div class="col-sm-3">
                                         <h5 class="mb-0">Hakkımda </h5>
@@ -242,15 +249,17 @@
                                 <hr>
 
 
-                                <button type="submit" class="btn btn-gradient-primary mr-2">Güncelle</button>
 
+                                <div class="col-md-12 text-right">
+                                    <button type="submit" class="btn btn-gradient-primary text-lg-right">   Güncelle  </button>
+                                </div>
 
 
                             </form>
 
                         </div>
                     </div>
-                    
+
 
 
 
@@ -259,5 +268,5 @@
             </div>
 
         </div>
-    </div>
+ 
 }

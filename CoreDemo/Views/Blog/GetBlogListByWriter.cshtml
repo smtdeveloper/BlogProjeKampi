@@ -6,8 +6,74 @@
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
+<style>
+
+    .alert{
+        background-color: #9bffa8;
+        padding: 20px 40px;
+        min-width : 450px;
+        position : absolute;
+        right:0;
+        top : 5px;
+        border-radius:4px;
+        border-left: 10px solid #67ff02;
+        overflow: hidden;
+
+    }
+
+        .alert .fa-check-circle{
+            position:absolute;
+            left : 20px;
+            top : 50%;
+            transform : translateY(-50%);
+            color: #29ce00;
+            font-size : 30px
+        }
+
+        .alert .msg {
+            padding: 0px 20px;
+            top: 50%;
+            color : #75ce00;
+            font-size: 18px;
+        }
+
+        .alert .close-btn {
+            position: absolute;
+            right: 0px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #80ffa0;
+            padding : 20px 18px;
+            cursor : pointer;
+
+        }
+
+        .alert .close-btn:hover{
+            background : #8aff66;
+        }
+        .none{
+            display:none;
+        }
+
+        .show{
+    animation: show_slide 1s ease forwards;
+}
+
+
+
+.hide {
+    animation: hide_slide 1s ease forwards;
+}
+
+</style>
 
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
@@ -39,7 +105,7 @@
                                 else
                                 { <span class="badge badge-secondary">Pasif</span>}
                             </td>
-                            <td>@Html.ActionLink("Sil", "BlogDelete", new { id = item.BlogId }, new { @class = "btn btn-outline-danger", onclick = "return confirm('Silmek İstediğinize Emin misiniz ?')" })</td>
+                            <td><button id="AlerBtn" class="btn btn-outline-danger" onclick="showQuestionModelWithId(@item.BlogId)">Sil</button></td>
                             <td><a href="/Blog/BlogEdit/@item.BlogId" class="btn btn-outline-warning">Güncelle</a></td>
                         </tr>
                     }
@@ -55,10 +121,7 @@
         </div>
 
 
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
-           Sil
-        </button>
+       
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -71,15 +134,85 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                       Blogu silmek istiyor musun !
+                        Blogu silmek istiyor musun !
                     </div>
                     <div class="modal-footer">
+
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">İPTAL</button>
-                        <button type="button" class="btn btn-danger">SİL</button>
+                        <button type="button" class="btn btn-danger" onclick="removeBlog()">SİL</button>
+
                     </div>
                 </div>
             </div>
         </div>
 
+       
+        <div class="alert none"  >
+            
+            <span class="far fa-check-circle"> </span>
+            <span class="msg h5">  Başarılı : Blog Silindi ! </span>
+
+
+            <div  id="close2" class="close-btn">
+                <span class="fas fa-times"></span>
+            </div>
+
+        </div>
+
+
+
+
     </div>
 </div>
+
+<script>
+
+    let selectedBlogId = 0;
+
+    let btn = document.querySelector("#AlerBtn");
+    let alert = document.querySelector(".alert");
+    let closeBtn = document.querySelector(".close-btn");
+
+    btn.addEventListener("click", function(){
+        alert.classList.remove("none");
+        alert.classList.remove("hide");
+        alert.classList.add("show");
+    })
+
+    closeBtn.addEventListener("click", function(){
+        alert.classList.remove("show");
+        alert.classList.add("hide");
+        window.location.reload()
+    })
+
+    function showQuestionModelWithId(id) {
+        selectedBlogId = id;
+        $('#exampleModalCenter').modal('show');
+    }
+
+
+    function removeBlog() {
+        $.get("BlogDelete/" + selectedBlogId, function () {
+
+            $('#exampleModalCenter').modal('hide')
+
+            alert.classList.remove("none");
+            alert.classList.remove("hide");
+            alert.classList.add("show");
+          
+           
+        });
+
+
+        function TimeOur() {
+            window.location.reload()
+        }
+
+    }
+
+   
+
+  
+
+    
+</script>

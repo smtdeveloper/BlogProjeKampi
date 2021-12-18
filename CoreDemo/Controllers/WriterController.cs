@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules.FluentValidation;
+using CoreDemo.Models;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -52,17 +54,15 @@ namespace CoreDemo.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult WriterEdit(Writer p, string passwordAgain)
+        public IActionResult WriterEdit(Writer writer)
         {
-           
             WriterValidator wl = new WriterValidator();
-            ValidationResult results = wl.Validate(p);
-            if (results.IsValid && p.Password == passwordAgain  )
+            ValidationResult results = wl.Validate(writer);
+            if (results.IsValid   )
             {
-                
-
-                p.Status = true;
-                wm.TUpdate(p);
+                writer.Status = true;
+                writer.Image = "test";
+                wm.TUpdate(writer);
                 return RedirectToAction("Index", "Dashboard");
             }
             else
@@ -76,6 +76,43 @@ namespace CoreDemo.Controllers
         }
 
         [AllowAnonymous]
+        [HttpGet]
+        public IActionResult WriterAdd()
+        {
+           
+            return View();
+        }
+
+
+        [AllowAnonymous]
+        [HttpPost]
+        public IActionResult WriterAdd(AddWriterImgDto dto) // model kullan +
+        {
+
+            Writer w = new Writer();
+            if (dto.Image != null)
+            {
+                var extension = Path.GetExtension(dto.Image.FileName);
+                var newImageName = Guid.NewGuid() + extension;
+                var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/WriterImageFiles/", newImageName);
+                var stream = new FileStream(location, FileMode.Create);
+                dto.Image.CopyTo(stream);
+                w.Image = newImageName;
+
+            }
+            w.Mail = dto.Mail;
+            w.Name = dto.Name;
+            w.Password = dto.Password;
+            w.About = dto.About;
+            w.Phone = dto.Phone;
+            w.City = dto.City;
+            w.Gender = dto.Gender;
+            w.Status = true;
+            wm.TAdd(w);
+            return RedirectToAction("Index", "Dashboard");
+        }
+
+        [AllowAnonymous]
         public IActionResult WriterNavbarPartial()
         {
             return View();
@@ -86,5 +123,7 @@ namespace CoreDemo.Controllers
         {
             return View();
         }
+
+
     }
 }

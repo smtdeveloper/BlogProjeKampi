@@ -26,7 +26,7 @@ namespace CoreDemo.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(Writer writer, string passwordAgain, string cities)
+        public IActionResult Index(Writer writer, string passwordAgain)
         {
             WriterValidator wv = new WriterValidator();
             ValidationResult result = wv.Validate(writer);
@@ -54,13 +54,9 @@ namespace CoreDemo.Controllers
             }
 
             return View();
-
-
-
-
-           
-
         }
+
+
         public List<SelectListItem> GetCityList()
         {
             List<SelectListItem> list = (from x in GetCity()

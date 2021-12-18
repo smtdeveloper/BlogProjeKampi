@@ -1,0 +1,155 @@
+﻿@model CoreDemo.Models.AddWriterImgDto
+
+@{
+    ViewData["Title"] = "WriterAdd";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+
+
+
+
+
+                <form class="form-group" method="post" enctype="multipart/form-data">
+                    <div class="col-md-12">
+                        <div class="card mb-12">
+                            <div class="card-body">
+
+                                @Html.HiddenFor(x => x.WriterId, new { @class = "form-control" })
+                                <div class="forms-sample">
+
+
+
+                                    <div class="col-md-12 text-right">
+                                        <button type="submit" class="btn btn-gradient-primary text-lg-right">   Kaydet  </button>
+                                    </div>
+                                    <br />
+
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h5 class="mb-0">Profil resmi </h5>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="form-group">
+                                                <input type="file" name="Image" />
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h5 class="mb-0">Ad Soyad </h5>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="form-group">
+                                                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <hr>
+
+
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h5 class="mb-0"> Cinsiyet </h5>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="form-group">
+                                                <input type="radio" name="Gender" value="Kadın"> Kadın
+                                                <input type="radio" name="Gender" value="Erkek"> Erkek
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr />
+
+
+
+                                    <div class="row form-group">
+                                        <div class="col-sm-3">
+                                            <h5 class="mb-0">Email </h5>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="form-group">
+                                                @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row form-group">
+                                        <div class="col-sm-3">
+                                            <h5 class="mb-0">Telefon</h5>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="form-group">
+                                                @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row form-group">
+                                        <div class="col-sm-3">
+                                            <h5 class="mb-0">Şehir / İlçe</h5>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="form-group">
+                                                @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <!--   parola -->
+                                    <div>
+                                        <div class="row form-group">
+                                            <div class="col-sm-3">
+                                                <h5 class="mb-0">Parola</h5>
+                                            </div>
+                                            <div class="col-sm-9 text-secondary">
+                                                <div class="form-group">
+                                                    <label for="exapleInputPassword4"> Şifre  </label>
+                                                    @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <hr>
+                                    <div class="row form-group">
+                                        <div class="col-sm-3">
+                                            <h5 class="mb-0">Hakkımda </h5>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="form-group">
+                                                @Html.TextAreaFor(x => x.About, 10, 3, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+
+
+
+
+                                    <div class="col-md-12 text-right">
+                                        <button type="submit" class="btn btn-gradient-primary text-lg-right">   Kaydet  </button>
+                                    </div>
+
+
+                                </div>
+
+                                    </div>
+                        </div>
+
+
+
+
+
+                    </div>
+
+                </form>
+
