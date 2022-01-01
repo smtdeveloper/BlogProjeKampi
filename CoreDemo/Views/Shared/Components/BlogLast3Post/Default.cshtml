@@ -13,11 +13,9 @@
                 <img src="@item.Image" class="card-img-top img-fluid" alt="">
             </a>
         </div>
-        <div class="col-md-7 blog-grid-right">
-            <h4 class="text-light"> @item.Title </h4>
-            <h4 >
-                <a  class="text-white-50" href="/blog/BlogReadAll/@item.BlogId/">@item.Content.Substring(0, item.Content.Substring(0, 30).LastIndexOf(" "))... </a>
-            </h4>
+        <div class="col-md-7 blog-grid-right">  
+            <h5 class="text-light"> @item.Title </h5>
+            @*<h6 > <a  class="text-white-50" href="/blog/BlogReadAll/@item.BlogId/">@item.Content.Substring(0, item.Content.Substring(0, 30).LastIndexOf(" "))... </a></h6>*@
             <div class="sub-meta">
                 <span>
                     <i class="far fa-clock"></i>@(((DateTime)item.CreateDate).ToString("dd-MMM-yyyy"))
