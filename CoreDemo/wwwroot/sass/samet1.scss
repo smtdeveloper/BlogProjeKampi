@@ -1,0 +1,767 @@
+﻿.fnc {
+    // main variables, basically everything depends on $slidingAT
+    $slidingAT: 1s;
+    $slidingDelay: $slidingAT / 3 * 2;
+    $maskAT: $slidingAT*0.7;
+    $headingAT: $slidingAT * 1.5;
+    $controlAT: $slidingAT/2;
+    $easing: ease-in-out;
+    $blendMode: luminosity;
+
+    $contentLeft: 40%;
+    $contentTop: 40%;
+
+    $headingPadding: 30px;
+    $headingFontSize: 100px;
+
+    $maskTop: 15%;
+    $maskRight: 100% - $contentLeft;
+    $maskHeight: 67vh;
+    $maskWidth: $maskHeight * 0.75;
+
+    $black: #1F2833;
+
+    $bgColors: ( dark: lighten(#242424, 20%), green: #42605E, red: lighten(#6A0A0D, 10%), blue: #2D7791 );
+
+    &-slider {
+        overflow: hidden;
+        box-sizing: border-box;
+        position: relative;
+        height: 100vh;
+
+        *, *:before, *:after {
+            box-sizing: border-box;
+        }
+
+        &__slides {
+            position: relative;
+            height: 100%;
+            transition: transform $slidingAT $slidingDelay;
+        }
+        // iterate through color map and set colors for specific classes
+        @each $colorTheme, $bgColor in $bgColors {
+            .m--blend-#{$colorTheme} {
+                .fnc-slide__inner {
+                    background-color: lighten($bgColor, 20%);
+                }
+
+                .fnc-slide__mask-inner {
+                    background-color: $bgColor;
+                }
+            }
+
+            .m--navbg-#{$colorTheme} {
+                background-color: $bgColor;
+            }
+        }
+    }
+
+    &-slide {
+        overflow: hidden;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        transform: translate3d(0,0,0);
+
+        &.m--before-sliding {
+            z-index: 2 !important;
+            transform: translate3d(100%,0,0);
+        }
+
+        &.m--active-slide {
+            z-index: 1;
+            transition: transform $slidingAT $slidingDelay $easing;
+            transform: translate3d(0,0,0);
+        }
+
+        &__inner {
+            position: relative;
+            height: 100%;
+            background-size: cover;
+            background-position: center top;
+            transform: translate3d(0,0,0);
+
+            .m--global-blending-active &,
+            .m--blend-bg-active & {
+                background-blend-mode: $blendMode;
+            }
+
+            .m--before-sliding & {
+                transform: translate3d(-100%,0,0);
+            }
+
+            .m--active-slide & {
+                transition: transform $slidingAT $slidingDelay $easing;
+                transform: translate3d(0,0,0);
+            }
+        }
+
+        &__mask {
+            $activeDelay: $slidingAT + $slidingDelay/3;
+            $xOffset: 200px;
+            $yOffset: 0;
+            $deg: 10deg;
+
+            overflow: hidden;
+            z-index: 1;
+            position: absolute;
+            right: $maskRight;
+            top: $maskTop;
+            width: $maskWidth;
+            height: $maskHeight;
+            margin-right: $headingPadding * -3;
+            // This line basically does all magic with masking effect. Very simple and elegant. Webkit only atm.
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 0, 6vh 0, 6vh 61vh, 44vh 61vh, 44vh 6vh, 6vh 6vh);
+            transform-origin: 50% 0;
+            transition-timing-function: $easing;
+
+            .m--before-sliding & {
+                transform: rotate($deg*-1) translate3d($xOffset,0,0);
+                opacity: 0;
+            }
+
+            .m--active-slide & {
+                transition: transform $maskAT $activeDelay, opacity $maskAT/2 $activeDelay;
+                transform: translate3d(0,0,0);
+                opacity: 1;
+            }
+
+            .m--previous-slide & {
+                transition: transform $maskAT $slidingDelay/2, opacity $maskAT/2 $maskAT/2 + $slidingDelay/2;
+                transform: rotate($deg) translate3d($xOffset*-1,0,0);
+                opacity: 0;
+            }
+
+            &-inner {
+                z-index: -1;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                width: 100vw;
+                height: 100vh;
+                margin-left: -50vw;
+                margin-top: -50vh;
+                background-size: cover;
+                background-position: center center;
+                background-blend-mode: $blendMode;
+                transform-origin: 50% (100vh - $maskHeight) / 2;
+                transition-timing-function: $easing;
+
+                .m--before-sliding & {
+                    transform: translateY($yOffset) rotate($deg) translateX($xOffset*-1) translateZ(0);
+                }
+
+                .m--active-slide & {
+                    transition: transform $maskAT $activeDelay;
+                    transform: translateX(0);
+                }
+
+                .m--previous-slide & {
+                    transition: transform $maskAT $slidingDelay/2;
+                    transform: translateY($yOffset) rotate($deg*-1) translateX($xOffset) translateZ(0);
+                }
+            }
+        }
+
+        &__content {
+            z-index: 2;
+            position: absolute;
+            left: $contentLeft;
+            top: $contentTop;
+        }
+
+        &__heading {
+            margin-bottom: 10px;
+            text-transform: uppercase;
+
+            &-line {
+                overflow: hidden;
+                position: relative;
+                padding-right: 20px;
+                font-size: $headingFontSize;
+                color: #fff;
+                word-spacing: 10px;
+
+                &:nth-child(2) {
+                    padding-left: $headingPadding;
+                }
+
+                .m--before-sliding & {
+                    transform: translateY(100%);
+                }
+
+                .m--active-slide & {
+                    transition: transform $headingAT $slidingDelay*1.5;
+                    transform: translateY(0);
+                }
+
+                .m--previous-slide & {
+                    transition: transform $headingAT;
+                    transform: translateY(-100%);
+                }
+
+                span {
+                    display: block;
+
+                    .m--before-sliding & {
+                        transform: translateY(-100%);
+                    }
+
+                    .m--active-slide & {
+                        transition: transform $headingAT $slidingDelay*1.5;
+                        transform: translateY(0);
+                    }
+
+                    .m--previous-slide & {
+                        transition: transform $headingAT;
+                        transform: translateY(100%);
+                    }
+                }
+            }
+        }
+
+        &__action-btn {
+            $hoverAT: 0.3s;
+            $fontSize: 20px;
+            $vertPadding: 5px;
+            $lineHeight: $fontSize + $vertPadding*2;
+
+            position: relative;
+            margin-left: 200px;
+            padding: $vertPadding 15px;
+            font-size: $fontSize;
+            line-height: 1;
+            color: transparent;
+            border: none;
+            text-transform: uppercase;
+            background: transparent;
+            cursor: pointer;
+            text-align: center;
+            outline: none;
+
+            span {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                perspective: 1000px;
+                transform-style: preserve-3d;
+                transition: transform $hoverAT;
+                transform-origin: 50% 0;
+                line-height: $lineHeight;
+                color: #fff;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    border: 2px solid #fff;
+                    border-top: none;
+                    border-bottom: none;
+                }
+
+                &:after {
+                    content: attr(data-text);
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    line-height: $lineHeight;
+                    background: $black;
+                    opacity: 0;
+                    transform-origin: 50% 0;
+                    transform: translateY(100%) rotateX(-90deg);
+                    transition: opacity $hoverAT/2 $hoverAT/2;
+                }
+            }
+
+            &:hover span {
+                transform: rotateX(90deg);
+
+                &:after {
+                    opacity: 1;
+                    transition: opacity $hoverAT/2;
+                }
+            }
+        }
+    }
+
+    &-nav {
+        z-index: 5;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+
+        &__bgs {
+            z-index: -1;
+            overflow: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        &__bg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+
+            &.m--nav-bg-before {
+                z-index: 2 !important;
+                transform: translateX(100%);
+            }
+
+            &.m--active-nav-bg {
+                z-index: 1;
+                transition: transform $slidingAT $slidingDelay;
+                transform: translateX(0);
+            }
+        }
+
+        &__controls {
+            font-size: 0;
+        }
+
+        &__control {
+            $controlWidth: 100px;
+
+            overflow: hidden;
+            position: relative;
+            display: inline-block;
+            vertical-align: top;
+            width: $controlWidth;
+            height: 50px;
+            font-size: 14px;
+            color: #fff;
+            text-transform: uppercase;
+            background: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            transition: background-color $controlAT;
+
+            &.m--active-control {
+                background: $black;
+            }
+
+            &-progress {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 2px;
+                background: #fff;
+                transform-origin: 0 50%;
+                transform: scaleX(0);
+                transition-timing-function: linear !important;
+
+                .m--with-autosliding .m--active-control & {
+                    transform: scaleX(1);
+                }
+
+                .m--prev-control & {
+                    transform: translateX(100%);
+                    transition: transform 0.5s !important;
+                }
+
+                .m--reset-progress & {
+                    transform: scaleX(0);
+                    transition: transform 0s 0s !important;
+                }
+
+                .m--autosliding-blocked & {
+                    transition: all 0s 0s !important;
+                    transform: scaleX(0) !important;
+                }
+            }
+        }
+    }
+}
+
+
+/* NOT PART OF COMMON SLIDER STYLES */
+$font: 'Open Sans', Helvetica, Arial, sans-serif;
+$creditsAT: 0.7s;
+$creditsWidth: 400px;
+
+body {
+    margin: 0;
+}
+
+.demo-cont {
+    overflow: hidden;
+    position: relative;
+    height: 100vh;
+    perspective: 1500px;
+    background: #000;
+
+    &__credits {
+        box-sizing: border-box;
+        overflow-y: auto;
+        z-index: 1;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: $creditsWidth;
+        height: 100%;
+        padding: 20px 10px 30px;
+        background: #303030;
+        font-family: $font;
+        color: #fff;
+        text-align: center;
+        transition: transform $creditsAT;
+        transform: translate3d(100%,0,0) rotateY(-45deg);
+        will-change: transform;
+
+        .credits-active & {
+            transition: transform $creditsAT $creditsAT/3;
+            transform: translate3d(0,0,0);
+        }
+
+        *, *:before, *:after {
+            box-sizing: border-box;
+        }
+
+        &-close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+
+            &:before,
+            &:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 50%;
+                width: 100%;
+                height: 2px;
+                margin-top: -1px;
+                background: #fff;
+            }
+
+            &:before {
+                transform: rotate(45deg);
+            }
+
+            &:after {
+                transform: rotate(-45deg);
+            }
+        }
+
+        &-heading {
+            text-transform: uppercase;
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        &-img {
+            display: block;
+            width: 60%;
+            margin: 0 auto 30px;
+            border-radius: 10px;
+        }
+
+        &-name {
+            margin-bottom: 20px;
+            font-size: 30px;
+        }
+
+        &-link {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        &-blend {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.example-slider {
+    z-index: 2;
+    transform: translate3d(0,0,0);
+    transition: transform $creditsAT;
+
+    .credits-active & {
+        transform: translate3d($creditsWidth*-1,0,0) rotateY(10deg) scale(0.9);
+    }
+
+    .fnc-slide {
+
+        &-1 {
+            .fnc-slide__inner,
+            .fnc-slide__mask-inner {
+                background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/blackwidow.jpg');
+            }
+        }
+
+        &-2 {
+            .fnc-slide__inner,
+            .fnc-slide__mask-inner {
+                background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/captainamerica.jpg');
+            }
+        }
+
+        &-3 {
+            .fnc-slide__inner,
+            .fnc-slide__mask-inner {
+                background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/ironman-alt.jpg');
+            }
+
+            .fnc-slide__inner:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(255,255,255,0.1);
+            }
+        }
+
+        &-4 {
+            .fnc-slide__inner,
+            .fnc-slide__mask-inner {
+                background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/thor.jpg');
+            }
+
+            .fnc-slide__inner:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.2);
+            }
+        }
+    }
+
+    .fnc-slide__heading,
+    .fnc-slide__action-btn,
+    .fnc-nav__control {
+        font-family: $font;
+    }
+}
+
+/* COLORFUL SWITCH STYLES 
+   ORIGINAL DEMO - https://codepen.io/suez/pen/WQjwOb */
+$w: 180px;
+$_baseW: 280;
+$h: $w * 120 / $_baseW;
+$br: $w * 50 / $_baseW;
+$outerOffset: 5px;
+$animTime: 0.5s;
+$dotS: $w * 8 / $_baseW;
+$dotLeft: $w * 204 / $_baseW;
+$dotLeftOffset: $w * -125 / $_baseW;
+$offS: $w * 64 / $_baseW;
+$onLeft: $w * 162 / $_baseW;
+$onTop: $w * 35 / $_baseW;
+$onWidth: $w * 30 / $_baseW;
+$onHeight: $w * 56 / $_baseW;
+$cubIn: cubic-bezier(.52,-0.96,.51,1.28);
+$cubOut: cubic-bezier(.67,-0.16,.47,1.61);
+
+@mixin switchOn() {
+    .colorful-switch__checkbox:checked ~ .colorful-switch__label & {
+        @content;
+    }
+}
+
+.colorful-switch {
+    position: relative;
+    width: $w;
+    height: $h;
+    margin: 0 auto;
+    border-radius: $br;
+    background: #cfcfcf;
+
+    &:before {
+        content: "";
+        z-index: -1;
+        position: absolute;
+        left: -$outerOffset;
+        top: -$outerOffset;
+        width: $w + $outerOffset*2;
+        height: $h + $outerOffset*2;
+        border-radius: $br + $outerOffset;
+        background: #314239;
+        transition: background-color 0.3s;
+    }
+
+    &:hover:before {
+        background: #4C735F;
+    }
+
+    &__checkbox {
+        z-index: -10;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+    }
+
+    &__label {
+        z-index: 1;
+        overflow: hidden;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: $br;
+        cursor: pointer;
+    }
+
+    &__bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: $w * 3;
+        height: 100%;
+        background: linear-gradient(90deg, #14DCD6 0, #10E7BD $w, #EF9C29 $w*2, #E76339 100%);
+        transition: transform $animTime;
+        transform: translate3d($w*-2,0,0);
+
+        @include switchOn {
+            transform: translate3d(0,0,0);
+        }
+    }
+
+    &__dot {
+        position: absolute;
+        left: $dotLeft;
+        top: 50%;
+        width: $dotS;
+        height: $dotS;
+        margin-left: $dotS/-2;
+        margin-top: $dotS/-2;
+        border-radius: 50%;
+        background: #fff;
+        transition: transform $animTime;
+        transform: translate3d(0,0,0);
+
+        @include switchOn {
+            transform: translate3d($dotLeftOffset,0,0);
+        }
+    }
+
+    &__on {
+        position: absolute;
+        left: $onLeft;
+        top: $onTop;
+        width: $onWidth;
+        height: $onHeight;
+        transition: transform $animTime;
+        transform: translate3d(0,0,0);
+
+        @include switchOn {
+            transform: translate3d($dotLeftOffset,0,0);
+        }
+
+        &__inner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: transform $animTime/2 0s $cubIn;
+            transform-origin: 100% 50%;
+            transform: rotate(45deg) scale(0) translateZ(0);
+
+            @include switchOn {
+                transition: transform $animTime/2 $animTime/2 $cubOut;
+                transform: rotate(45deg) scale(1) translateZ(0);
+            }
+
+            &:before,
+            &:after {
+                content: "";
+                position: absolute;
+                border-radius: $dotS/2;
+                background: #fff;
+            }
+
+            &:before {
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: $dotS+1px;
+            }
+
+            &:after {
+                right: 0;
+                top: 0;
+                width: $dotS+1px;
+                height: 100%;
+            }
+        }
+    }
+
+    &__off {
+        position: absolute;
+        left: $dotLeft;
+        top: 50%;
+        width: $offS;
+        height: $offS;
+        margin-left: $offS/-2;
+        margin-top: $offS/-2;
+        transition: transform $animTime;
+        transform: translate3d(0,0,0);
+
+        @include switchOn {
+            transform: translate3d($dotLeftOffset,0,0);
+        }
+
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: $dotS;
+            margin-top: $dotS/-2;
+            border-radius: $dotS/2;
+            background: #fff;
+            transition: transform $animTime/2 $animTime/2;
+
+            @include switchOn {
+                transition-delay: 0s;
+            }
+        }
+
+        &:before {
+            transform: rotate(45deg) scaleX(1) translateZ(0);
+
+            @include switchOn {
+                transform: rotate(45deg) scaleX(0) translateZ(0);
+            }
+        }
+
+        &:after {
+            transition-timing-function: $cubOut;
+            transform: rotate(-45deg) scaleX(1) translateZ(0);
+
+            @include switchOn {
+                transition-timing-function: ease;
+                transform: rotate(-45deg) scaleX(0) translateZ(0);
+            }
+        }
+    }
+}

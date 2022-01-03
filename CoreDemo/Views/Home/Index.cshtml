@@ -1,12 +1,344 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Ana Sayfa";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">SMTcoder Core Kampı Başladı :)</h1>
-    
-    <a class="h2" href="/Blog/index">
-        <span class="menu-title">Siteye Git</span>
-        <i class="mdi mdi-link menu-icon"></i>
-    </a>
+
+<link rel="stylesheet" href="/sass/samet1.min.css" />
+
+<div class="demo-cont">
+    <!-- slider start -->
+    <div class="fnc-slider example-slider">
+        <div class="fnc-slider__slides">
+            <!-- slide start -->
+            <div class="fnc-slide m--blend-green m--active-slide">
+                <div class="fnc-slide__inner">
+                    <div class="fnc-slide__mask">
+                        <div class="fnc-slide__mask-inner"></div>
+                    </div>
+                    <div class="fnc-slide__content">
+                        <h2 class="fnc-slide__heading">
+                            <div class="fnc-slide__heading-line">
+                                <span>Black</span>
+                            </div>
+                            <div class="fnc-slide__heading-line">
+                                <span>Widow</span>
+                            </div>
+                        </h2>
+                        <button type="button" class="fnc-slide__action-btn">
+                            SMTcoder
+                            <span data-text="SMTcoder">creative</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- slide end -->
+            <!-- slide start -->
+            <div class="fnc-slide m--blend-dark">
+                <div class="fnc-slide__inner">
+                    <div class="fnc-slide__mask">
+                        <div class="fnc-slide__mask-inner"></div>
+                    </div>
+                    <div class="fnc-slide__content">
+                        <h2 class="fnc-slide__heading">
+                            <div class="fnc-slide__heading-line">
+                                <span>Captain</span>
+                            </div>
+                            <div class="fnc-slide__heading-line">
+                                <span>America</span>
+                            </div>
+                        </h2>
+                        <button type="button" class="fnc-slide__action-btn">
+                            SMTcoder
+                            <span data-text="SMTcoder">Credits</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- slide end -->
+            <!-- slide start -->
+            <div class="fnc-slide m--blend-red">
+                <div class="fnc-slide__inner">
+                    <div class="fnc-slide__mask">
+                        <div class="fnc-slide__mask-inner"></div>
+                    </div>
+                    <div class="fnc-slide__content">
+                        <h2 class="fnc-slide__heading">
+                            <div class="fnc-slide__heading-line">
+                                <span>Iron</span>
+                            </div>
+                            <div class="fnc-slide__heading-line">
+                                <span>Man</span>
+                            </div>
+                        </h2>
+                        <button type="button" class="fnc-slide__action-btn">
+                            SMTcoder
+                            <span data-text="SMTcoder">Credits</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- slide end -->
+            <!-- slide start -->
+            <div class="fnc-slide m--blend-blue">
+                <div class="fnc-slide__inner">
+                    <div class="fnc-slide__mask">
+                        <div class="fnc-slide__mask-inner"></div>
+                    </div>
+                    <div class="fnc-slide__content">
+                        <h2 class="fnc-slide__heading">
+                            <div class="fnc-slide__heading-line">
+                                <span>Thor</span>
+                            </div>
+                            <div class="fnc-slide__heading-line">
+                                <span>Just Thor</span>
+                            </div>
+                        </h2>
+                        <button type="button" class="fnc-slide__action-btn">
+                            SMTcoder
+                            <span data-text="SMTcoder">Credits</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- slide end -->
+        </div>
+        <nav class="fnc-nav">
+            <div class="fnc-nav__bgs">
+                <div class="fnc-nav__bg m--navbg-green m--active-nav-bg"></div>
+                <div class="fnc-nav__bg m--navbg-dark"></div>
+                <div class="fnc-nav__bg m--navbg-red"></div>
+                <div class="fnc-nav__bg m--navbg-blue"></div>
+            </div>
+            <div class="fnc-nav__controls">
+                <button class="fnc-nav__control">
+                    Black Widow
+                    <span class="fnc-nav__control-progress"></span>
+                </button>
+                <button class="fnc-nav__control">
+                    Captain America
+                    <span class="fnc-nav__control-progress"></span>
+                </button>
+                <button class="fnc-nav__control">
+                    Iron Man
+                    <span class="fnc-nav__control-progress"></span>
+                </button>
+                <button class="fnc-nav__control">
+                    Thor
+                    <span class="fnc-nav__control-progress"></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+    <!-- slider end -->
+    <div class="demo-cont__credits">
+        <div class="demo-cont__credits-close"></div>
+        <h2 class="demo-cont__credits-heading">Made by</h2>
+        <img src="//s3-us-west-2.amazonaws.com/s.cdpn.io/142996/profile/profile-512_5.jpg" alt="" class="demo-cont__credits-img" />
+        <h3 class="demo-cont__credits-name">Nikolay Talanov</h3>
+        <a href="https://codepen.io/suez/" target="_blank" class="demo-cont__credits-link">My codepen</a>
+        <a href="https://twitter.com/NikolayTalanov" target="_blank" class="demo-cont__credits-link">My twitter</a>
+        <h2 class="demo-cont__credits-heading">Based on</h2>
+        <a href="https://dribbble.com/shots/2375246-Fashion-Butique-slider-animation" target="_blank" class="demo-cont__credits-link">Concept by Kreativa Studio</a>
+        <h4 class="demo-cont__credits-blend">Global Blend Mode</h4>
+        <div class="colorful-switch">
+            <input type="checkbox" class="colorful-switch__checkbox js-activate-global-blending" id="colorful-switch-cb" />
+            <label class="colorful-switch__label" for="colorful-switch-cb">
+                <span class="colorful-switch__bg"></span>
+                <span class="colorful-switch__dot"></span>
+                <span class="colorful-switch__on">
+                    <span class="colorful-switch__on__inner"></span>
+                </span>
+                <span class="colorful-switch__off"></span>
+            </label>
+        </div>
+    </div>
 </div>
+
+
+<script>
+    (function () {
+
+        var $$ = function (selector, context) {
+            var context = context || document;
+            var elements = context.querySelectorAll(selector);
+            return [].slice.call(elements);
+        };
+
+        function _fncSliderInit($slider, options) {
+            var prefix = ".fnc-";
+
+            var $slider = $slider;
+            var $slidesCont = $slider.querySelector(prefix + "slider__slides");
+            var $slides = $$(prefix + "slide", $slider);
+            var $controls = $$(prefix + "nav__control", $slider);
+            var $controlsBgs = $$(prefix + "nav__bg", $slider);
+            var $progressAS = $$(prefix + "nav__control-progress", $slider);
+
+            var numOfSlides = $slides.length;
+            var curSlide = 1;
+            var sliding = false;
+            var slidingAT = +parseFloat(getComputedStyle($slidesCont)["transition-duration"]) * 1000;
+            var slidingDelay = +parseFloat(getComputedStyle($slidesCont)["transition-delay"]) * 1000;
+
+            var autoSlidingActive = false;
+            var autoSlidingTO;
+            var autoSlidingDelay = 5000; // default autosliding delay value
+            var autoSlidingBlocked = false;
+
+            var $activeSlide;
+            var $activeControlsBg;
+            var $prevControl;
+
+            function setIDs() {
+                $slides.forEach(function ($slide, index) {
+                    $slide.classList.add("fnc-slide-" + (index + 1));
+                });
+
+                $controls.forEach(function ($control, index) {
+                    $control.setAttribute("data-slide", index + 1);
+                    $control.classList.add("fnc-nav__control-" + (index + 1));
+                });
+
+                $controlsBgs.forEach(function ($bg, index) {
+                    $bg.classList.add("fnc-nav__bg-" + (index + 1));
+                });
+            };
+
+            setIDs();
+
+            function afterSlidingHandler() {
+                $slider.querySelector(".m--previous-slide").classList.remove("m--active-slide", "m--previous-slide");
+                $slider.querySelector(".m--previous-nav-bg").classList.remove("m--active-nav-bg", "m--previous-nav-bg");
+
+                $activeSlide.classList.remove("m--before-sliding");
+                $activeControlsBg.classList.remove("m--nav-bg-before");
+                $prevControl.classList.remove("m--prev-control");
+                $prevControl.classList.add("m--reset-progress");
+                var triggerLayout = $prevControl.offsetTop;
+                $prevControl.classList.remove("m--reset-progress");
+
+                sliding = false;
+                var layoutTrigger = $slider.offsetTop;
+
+                if (autoSlidingActive && !autoSlidingBlocked) {
+                    setAutoslidingTO();
+                }
+            };
+
+            function performSliding(slideID) {
+                if (sliding) return;
+                sliding = true;
+                window.clearTimeout(autoSlidingTO);
+                curSlide = slideID;
+
+                $prevControl = $slider.querySelector(".m--active-control");
+                $prevControl.classList.remove("m--active-control");
+                $prevControl.classList.add("m--prev-control");
+                $slider.querySelector(prefix + "nav__control-" + slideID).classList.add("m--active-control");
+
+                $activeSlide = $slider.querySelector(prefix + "slide-" + slideID);
+                $activeControlsBg = $slider.querySelector(prefix + "nav__bg-" + slideID);
+
+                $slider.querySelector(".m--active-slide").classList.add("m--previous-slide");
+                $slider.querySelector(".m--active-nav-bg").classList.add("m--previous-nav-bg");
+
+                $activeSlide.classList.add("m--before-sliding");
+                $activeControlsBg.classList.add("m--nav-bg-before");
+
+                var layoutTrigger = $activeSlide.offsetTop;
+
+                $activeSlide.classList.add("m--active-slide");
+                $activeControlsBg.classList.add("m--active-nav-bg");
+
+                setTimeout(afterSlidingHandler, slidingAT + slidingDelay);
+            };
+
+
+
+            function controlClickHandler() {
+                if (sliding) return;
+                if (this.classList.contains("m--active-control")) return;
+                if (options.blockASafterClick) {
+                    autoSlidingBlocked = true;
+                    $slider.classList.add("m--autosliding-blocked");
+                }
+
+                var slideID = +this.getAttribute("data-slide");
+
+                performSliding(slideID);
+            };
+
+            $controls.forEach(function ($control) {
+                $control.addEventListener("click", controlClickHandler);
+            });
+
+            function setAutoslidingTO() {
+                window.clearTimeout(autoSlidingTO);
+                var delay = +options.autoSlidingDelay || autoSlidingDelay;
+                curSlide++;
+                if (curSlide > numOfSlides) curSlide = 1;
+
+                autoSlidingTO = setTimeout(function () {
+                    performSliding(curSlide);
+                }, delay);
+            };
+
+            if (options.autoSliding || +options.autoSlidingDelay > 0) {
+                if (options.autoSliding === false) return;
+
+                autoSlidingActive = true;
+                setAutoslidingTO();
+
+                $slider.classList.add("m--with-autosliding");
+                var triggerLayout = $slider.offsetTop;
+
+                var delay = +options.autoSlidingDelay || autoSlidingDelay;
+                delay += slidingDelay + slidingAT;
+
+                $progressAS.forEach(function ($progress) {
+                    $progress.style.transition = "transform " + (delay / 1000) + "s";
+                });
+            }
+
+            $slider.querySelector(".fnc-nav__control:first-child").classList.add("m--active-control");
+
+        };
+
+        var fncSlider = function (sliderSelector, options) {
+            var $sliders = $$(sliderSelector);
+
+            $sliders.forEach(function ($slider) {
+                _fncSliderInit($slider, options);
+            });
+        };
+
+        window.fncSlider = fncSlider;
+    }());
+
+    /* not part of the slider scripts */
+
+    /* Slider initialization
+    options:
+    autoSliding - boolean
+    autoSlidingDelay - delay in ms. If audoSliding is on and no value provided, default value is 5000
+    blockASafterClick - boolean. If user clicked any sliding control, autosliding won't start again
+    */
+    fncSlider(".example-slider", { autoSlidingDelay: 4000 });
+
+    var $demoCont = document.querySelector(".demo-cont");
+
+    [].slice.call(document.querySelectorAll(".fnc-slide__action-btn")).forEach(function ($btn) {
+        $btn.addEventListener("click", function () {
+            $demoCont.classList.toggle("credits-active");
+        });
+    });
+
+    document.querySelector(".demo-cont__credits-close").addEventListener("click", function () {
+        $demoCont.classList.remove("credits-active");
+    });
+
+    document.querySelector(".js-activate-global-blending").addEventListener("click", function () {
+        document.querySelector(".example-slider").classList.toggle("m--global-blending-active");
+    });
+</script>    
