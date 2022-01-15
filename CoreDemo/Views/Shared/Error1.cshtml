@@ -1,10 +1,4 @@
 ﻿
-@{
-    ViewData["Title"] = "Error1";
-    Layout = "~/Views/Shared/UserLayout.cshtml";
-}
-
-<
 <!doctype html>
 <!--[if lte IE 9]>
 <html lang="en" class="oldie">
@@ -29,6 +23,10 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <style>
+        body {
+            background-color: black;
+        }
+   
         html {
             background-color: black;
         }
@@ -51,7 +49,8 @@
     </style>
 </head>
 <body>
-   
+    <br />
+    <br />
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
         <strong> Sayfa Bulunamadı 404 ! </strong> Bu sayfa kayıplara karışmış.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -532,14 +531,14 @@
 
     <br /> <br />
 
-    <div class="text-center">
+    <div class="text-center text-light">
         <h1> KAYIP MI OLDUN? </h1>
         <h4>
             ENDİŞE ETME. HERKESİN BAŞINA GELEBİLİR. <br />
-            Buyur seni bloglara alalım
+            Buyur seni Ana Sayfaya alalım
         </h4>
         <br />
-        <button type="button" class="btn btn-success btn-lg btn-block"> <a class="nav-link text-light " href="/Blog/Index"> <H3> Bloglar </H3> </a> </button>
+        <button type="button" class="btn btn-success btn-lg btn-block"> <a class="nav-link text-light " href="/Home/"> <H3> Ana Sayfa </H3> </a> </button>
         <br /> 
 
 
