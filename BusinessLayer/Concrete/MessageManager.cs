@@ -35,7 +35,7 @@ namespace BusinessLayer.Concrete
 
         public List<Message> GetInboxListByWriter(string p)
         {
-            return _messageDal.GetAll( x => x.Receiver == p );
+            return _messageDal.GetAll( x => x.Receiver == p ).Take(3).ToList();
         }
 
         public Message TGetById(int id)

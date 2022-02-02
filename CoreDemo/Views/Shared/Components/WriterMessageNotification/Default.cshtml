@@ -1,35 +1,22 @@
-﻿<div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-    <h6 class="p-3 mb-0">Messages</h6>
+﻿@using EntityLayer.Concrete
+@model List<Message>
+
+<div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+    <h6 class="p-3 mb-0">Mesajlar</h6>
+
     <div class="dropdown-divider"></div>
-    <a class="dropdown-item preview-item">
-        <div class="preview-thumbnail">
-            <img src="~/writer/assets/images/faces/face4.jpg" alt="image" class="profile-pic">
-        </div>
-        <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-            <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Mark send you a message</h6>
-            <p class="text-gray mb-0"> 1 Minutes ago </p>
-        </div>
-    </a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item preview-item">
-        <div class="preview-thumbnail">
-            <img src="~/writer/assets/images/faces/face2.jpg" alt="image" class="profile-pic">
-        </div>
-        <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-            <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Cregh send you a message</h6>
-            <p class="text-gray mb-0"> 15 Minutes ago </p>
-        </div>
-    </a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item preview-item">
-        <div class="preview-thumbnail">
-            <img src="~/writer/assets/images/faces/face3.jpg" alt="image" class="profile-pic">
-        </div>
-        <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-            <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Profile picture updated</h6>
-            <p class="text-gray mb-0"> 18 Minutes ago </p>
-        </div>
-    </a>
-    <div class="dropdown-divider"></div>
-    <h6 class="p-3 mb-0 text-center">3 new messages</h6>
+    @foreach (var item in Model)
+    {
+        <a class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+                <img src="https://img.icons8.com/nolan/64/topic.png" alt="image" class="profile-pic">
+               
+            </div>
+            <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                <h5 class="text-black">@item.Sender Yeni mesaj</h5>
+                <h6 class="text-gray mb-0"> @item.MessageDate.ToShortDateString() </h6>
+            </div>
+        </a>
+    }
+    <h6 class="p-3 mb-0 text-center"> 3 Yeni Mesaj  </h6>
 </div>
