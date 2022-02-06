@@ -13,7 +13,7 @@ namespace CoreDemo.Views.Shared.Components.WriterMessageNotification
         NotificationManager nm = new NotificationManager(new EfNotificationRepository());
         public IViewComponentResult Invoke()
         {
-            var values = nm.TGetAll();
+            var values = nm.TGetAll3Last();
             return View(values);
         }
     }

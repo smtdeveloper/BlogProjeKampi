@@ -9,6 +9,6 @@ namespace BusinessLayer.Abstract
 {
    public interface INotificationService : IGenericService<Notification>
     {
-
+        List<Notification> TGetAll3Last();
     }
 }

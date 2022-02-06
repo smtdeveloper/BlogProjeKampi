@@ -29,7 +29,12 @@ namespace BusinessLayer.Concrete
 
         public List<Notification> TGetAll()
         {
-           return _notificationDal.GetAll().Take(3).ToList();
+           return _notificationDal.GetAll();
+        }
+
+        public List<Notification> TGetAll3Last()
+        {
+            return _notificationDal.GetAll().Take(3).ToList();
         }
 
         public Notification TGetById(int id)

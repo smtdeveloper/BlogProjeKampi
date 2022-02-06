@@ -1,0 +1,56 @@
+﻿@using EntityLayer.Concrete
+@model List<Notification>
+
+
+@{
+    ViewData["Title"] = "AllNotification";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<h1 class="text-lg-center"> Bildirimler </h1>
+
+
+<br />
+
+<hr />
+
+@foreach (var item in Model)
+{
+    <div id="accordion">
+
+
+
+        <div class="card">
+            <div class="card-header bg-facebook float" id="headingOne">
+
+                <h3 class="text-black m-3 btn btn-gradient-light" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    @item.NotificationId :  @item.NotificationType
+                </h3>
+
+
+                <h4 class="text-right h4 text-light float-right">@item.NotificationDate.ToShortDateString()</h4>
+                <button type="button" class="btn btn-danger m-4 float-right">Sil</button>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <h3 class="float-right text-black m-3 btn btn-gradient-light" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    # @item.NotificationId
+                </h3>
+                <div class="card-body">
+
+                    <h4 class="text-lg-center"> @item.NotificationType   </h4>
+                    <p> @item.NotificationDetails </p>
+                  
+
+                </div>
+
+               
+
+            </div>
+        </div>
+
+       
+
+
+    </div>
+}
