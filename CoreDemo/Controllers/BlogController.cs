@@ -66,6 +66,17 @@ namespace CoreDemo.Controllers
 
        
 
+        // Yorum
+        // Satırı
+
+
+
+        /* 
+         Yorum
+         Satırı
+         */
+
+
         [HttpPost]
         public IActionResult BlogAdd(Blog blog)
         {

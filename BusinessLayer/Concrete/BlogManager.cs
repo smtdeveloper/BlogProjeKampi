@@ -16,6 +16,11 @@ namespace BusinessLayer.Concrete
         public BlogManager(IBlogDal blogDal)
         {
             _blogDal = blogDal;
+
+            for (int i = 0; i < 10; i+=1  )
+            {
+                Console.WriteLine("SMTcoder");
+            }
         }
 
         public List<Blog> TGetAll()

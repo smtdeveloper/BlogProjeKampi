@@ -1,5 +1,5 @@
 ﻿@using EntityLayer.Concrete
-@model List<Message>
+@model List<Message2>
 
 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
     <h6 class="p-3 mb-0">Mesajlar</h6>
@@ -13,7 +13,7 @@
                
             </div>
             <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                <h5 class="text-black">@item.Sender Yeni mesaj</h5>
+                <h5 class="text-black">@item.SenderID sana mesaj gönderdi ! </h5>
                 <h6 class="text-gray mb-0"> @item.MessageDate.ToShortDateString() </h6>
             </div>
         </a>
