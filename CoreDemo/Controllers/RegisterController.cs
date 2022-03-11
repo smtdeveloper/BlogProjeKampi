@@ -17,14 +17,14 @@ namespace CoreDemo.Controllers
     public class RegisterController : Controller
     {
        WriterManager wm = new WriterManager(new EfWriterRepository());
-
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Index()
         {
             //ViewBag.Cities = GetCityList();
             return View();
         }
-
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult Index(Writer writer, string passwordAgain)
         {

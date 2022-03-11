@@ -9,14 +9,14 @@
     {
         <a class="dropdown-item preview-item">
             <div class="preview-thumbnail">
-                <img src="https://img.icons8.com/nolan/64/topic.png" alt="image" class="profile-pic">
+                <img src="@item.SenderUser.Image" alt="image" class="profile-pic">
                
             </div>
             <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                <h5 class="text-black">@item.SenderID sana mesaj gönderdi ! </h5>
+                <h5 class="text-black">@item.SenderUser.Name sana mesaj gönderdi ! </h5>
                 <h6 class="text-gray mb-0"> @item.MessageDate.ToShortDateString() </h6>
             </div>
         </a>
     }
-    <h6 class="p-3 mb-0 text-center"> 3 Yeni Mesaj  </h6>
+    <h6 class="p-3 mb-0 text-center"> @Model.Count Yeni Mesaj  </h6>
 </div>

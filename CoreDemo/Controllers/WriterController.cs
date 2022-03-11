@@ -21,6 +21,13 @@ namespace CoreDemo.Controllers
         WriterManager wm = new WriterManager(new EfWriterRepository());
         public IActionResult Index()
         {
+            var usermail = User.Identity.Name;
+            ViewBag.mailName = usermail;
+
+            Context c = new Context();
+            var writerName = c.Writers.Where(x => x.Mail == usermail).Select(y => y.Name).FirstOrDefault();
+            ViewBag.writerName = writerName;
+
             return View();
         }
 
@@ -34,7 +41,10 @@ namespace CoreDemo.Controllers
         [HttpGet]
         public IActionResult ChangePassword()
         {
-            var result = wm.TGetById(1);
+            var usermail = User.Identity.Name;
+            Context c = new Context();
+            var writerId = c.Writers.Where(x => x.Mail == usermail).Select(y => y.WriterId).FirstOrDefault();
+            var result = wm.TGetById(writerId);
             return View(result);
         }
         [AllowAnonymous]
@@ -44,15 +54,18 @@ namespace CoreDemo.Controllers
             return View();
         }
 
-        [AllowAnonymous]
+       
         [HttpGet]
         public IActionResult WriterEdit()
         {
-            var result =  wm.TGetById(1);
+            var usermail = User.Identity.Name;
+            Context c = new Context();
+            var writerId = c.Writers.Where(x => x.Mail == usermail).Select(y => y.WriterId).FirstOrDefault();
+            var result =  wm.TGetById(writerId);
             return View(result);
         }
 
-        [AllowAnonymous]
+       
         [HttpPost]
         public IActionResult WriterEdit(Writer writer)
         {

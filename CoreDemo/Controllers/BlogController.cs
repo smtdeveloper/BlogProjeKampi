@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules.FluentValidation;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
@@ -13,11 +14,13 @@ using System.Threading.Tasks;
 
 namespace CoreDemo.Controllers
 {
-   [AllowAnonymous]
+  
     public class BlogController : Controller
     {
         BlogManager bm = new BlogManager(new EfBlogRepository());
         CategoryManager cm = new CategoryManager(new EfCategoryRepository());
+        Context c = new Context();
+
         public IActionResult Index()
         {
             var result = bm.GetBlogsListWithCategory();
@@ -45,7 +48,10 @@ namespace CoreDemo.Controllers
 
         public IActionResult GetBlogListByWriter()
         {
-            var result =  bm.GetBlogsListWithWriter(20);
+
+            var usermail = User.Identity.Name;
+            var writerId = c.Writers.Where(x => x.Mail == usermail).Select(y => y.WriterId).FirstOrDefault();
+            var result =  bm.GetBlogsListWithWriter(writerId);
             return View(result);
         }
 
@@ -86,7 +92,11 @@ namespace CoreDemo.Controllers
             {
                 blog.Status = true;
                 blog.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-                blog.WriterId = 20;
+
+                var usermail = User.Identity.Name;
+                var writerId = c.Writers.Where(x => x.Mail == usermail).Select(y => y.WriterId).FirstOrDefault();
+                blog.WriterId = writerId;
+
                 bm.TAdd(blog);
                 return RedirectToAction("GetBlogListByWriter", "Blog");    
             }
@@ -136,7 +146,11 @@ namespace CoreDemo.Controllers
 
             blog.Status = true;
             blog.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-            blog.WriterId = 20;
+
+            var usermail = User.Identity.Name;
+            var writerId = c.Writers.Where(x => x.Mail == usermail).Select(y => y.WriterId).FirstOrDefault();
+
+            blog.WriterId = writerId;
             bm.TUpdate(blog);
 
            
