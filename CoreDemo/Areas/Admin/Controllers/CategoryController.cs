@@ -1,5 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules.FluentValidation;
 using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -20,5 +23,36 @@ namespace CoreDemo.Areas.Admin.Controllers
             var values = cm.TGetAll().ToPagedList(page,3);
             return View(values);
         }
+
+        [HttpGet]
+        public IActionResult CategoryAdd()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CategoryAdd(Category category)
+        {
+            CategoryValidator cv = new CategoryValidator();
+             ValidationResult results = cv.Validate(category);
+            if (results.IsValid)
+            {
+                category.Status = true;
+                cm.TAdd(category);
+                return RedirectToAction("CategoryAdd", "Category");    
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
+        }
+
     }
+
+   
+
 }

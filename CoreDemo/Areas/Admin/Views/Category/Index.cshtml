@@ -30,4 +30,6 @@
     }
 </table>
 <BR />
+<a href="/Admin/Category/CategoryAdd/" class="btn btn-success" >  Yeni Kategori  </a>
+<br /> <br />   
 @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new {page}))
