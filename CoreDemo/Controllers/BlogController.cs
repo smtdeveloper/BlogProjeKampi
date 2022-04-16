@@ -69,20 +69,7 @@ namespace CoreDemo.Controllers
 
             return View();
         }
-
-       
-
-        // Yorum
-        // Satırı
-
-
-
-        /* 
-         Yorum
-         Satırı
-         */
-
-
+        
         [HttpPost]
         public IActionResult BlogAdd(Blog blog)
         {
