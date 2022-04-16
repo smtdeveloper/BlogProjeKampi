@@ -14,12 +14,12 @@
 {
     @Html.Label("Kategori Başlığını Giriniz")
     @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-success" })
+    @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger " })
     <br />
     <br />
     @Html.Label("Kategori Açıklamasını Giriniz!")
     @Html.TextAreaFor(x => x.Description, 15, 3, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-success" })
+    @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
     <br />
     <br />
     <button class="btn btn-outline-success">Kaydet</button>

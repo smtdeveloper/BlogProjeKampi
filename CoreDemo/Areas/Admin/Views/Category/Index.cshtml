@@ -23,7 +23,7 @@
         <tr>
             <td>@item.CategoryId </td>
             <td>@item.Name </td>
-            <td> <a href="#" class="btn btn-secondary"> Pasif Yap </a> </td>
+            <td> <a href="/Admin/Category/CategoryPassive/@item.CategoryId/" onclick="return confirm('Emin misiniz ?  ' )" class="btn btn-secondary"> Pasif Yap </a> </td>
             <td> <a href="#" class="btn btn-success"> Aktif Yap </a> </td>
             <td> <a href="#" class="btn btn-danger"> Düzenle </a> </td>
         </tr>

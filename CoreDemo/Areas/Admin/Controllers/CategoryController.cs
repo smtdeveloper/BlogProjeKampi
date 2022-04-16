@@ -51,6 +51,15 @@ namespace CoreDemo.Areas.Admin.Controllers
             return View();
         }
 
+        public IActionResult CategoryPassive(int id)
+        {
+            var value = cm.TGetById(id);
+            value.Status = false;
+            cm.TUpdate(value);
+
+            return RedirectToAction("Index");
+        }
+
     }
 
    

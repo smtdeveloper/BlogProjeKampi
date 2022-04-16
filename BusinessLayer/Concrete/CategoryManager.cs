@@ -21,7 +21,7 @@ namespace BusinessLayer.Concrete
 
         public List<Category> TGetAll()
         {
-            return _categoryDal.GetAll();
+            return _categoryDal.GetAll(x=> x.Status == true).ToList();
         }
 
         public Category TGetById(int id)
