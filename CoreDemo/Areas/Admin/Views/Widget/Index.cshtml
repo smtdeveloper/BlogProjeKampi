@@ -8,18 +8,11 @@
 <html>
 
 <body>
-
-
     <div class="wrapper wrapper-content animated fadeInRight">
 
         @await Component.InvokeAsync("Statistic1")
-
-
         @await Component.InvokeAsync("Statistic2")
 
-
-    
-      
         <div class="row">
             <div class="col-lg-2">
                 <div class="widget style1 navy-bg">
@@ -94,112 +87,8 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="widget-head-color-box navy-bg p-lg text-center">
-                    <div class="m-b-md">
-                        <h2 class="font-bold no-margins">
-                            Alex Smith
-                        </h2>
-                        <small>Founder of Groupeq</small>
-                    </div>
-                    <img src="~/inspinia-gh-pages/img/a4.jpg" class="rounded-circle circle-border m-b-md" alt="profile">
-                    <div>
-                        <span>100 Tweets</span> |
-                        <span>350 Following</span> |
-                        <span>610 Followers</span>
-                    </div>
-                </div>
-                <div class="widget-text-box">
-                    <h4 class="media-heading">Alex Smith</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    <div class="text-right">
-                        <a href="" class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
-                        <a href="" class="btn btn-xs btn-primary"><i class="fa fa-heart"></i> Love</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="widget navy-bg p-lg text-center">
-                    <div class="m-b-md">
-                        <i class="fa fa-shield fa-4x"></i>
-                        <h1 class="m-xs">456</h1>
-                        <h3 class="font-bold no-margins">
-                            Shield
-                        </h3>
-                        <small>power</small>
-                    </div>
-                </div>
-                <div class="widget  p-lg text-center">
-                    <div class="m-b-md">
-                        <i class="fa fa-flash fa-4x"></i>
-                        <h1 class="m-xs">612</h1>
-                        <h3 class="font-bold no-margins">
-                            Thunder
-                        </h3>
-                        <small>amount</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="widget lazur-bg p-xl">
-
-                    <h2>
-                        Janet Smith
-                    </h2>
-                    <ul class="list-unstyled m-t-md">
-                        <li>
-                            <span class="fa fa-envelope m-r-xs"></span>
-                            <label>Email:</label>
-                            mike@mail.com
-                        </li>
-                        <li>
-                            <span class="fa fa-home m-r-xs"></span>
-                            <label>Address:</label>
-                            Street 200, Avenue 10
-                        </li>
-                        <li>
-                            <span class="fa fa-phone m-r-xs"></span>
-                            <label>Contact:</label>
-                            (+121) 678 3462
-                        </li>
-                    </ul>
-
-                </div>
-                <div class="widget red-bg p-lg text-center">
-                    <div class="m-b-md">
-                        <i class="fa fa-bell fa-4x"></i>
-                        <h1 class="m-xs">47</h1>
-                        <h3 class="font-bold no-margins">
-                            Notification
-                        </h3>
-                        <small>We detect the error.</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="widget yellow-bg p-lg text-center">
-                    <div class="m-b-md">
-                        <i class="fa fa-thumbs-up fa-4x"></i>
-                        <h1 class="m-xs">520</h1>
-                        <h3 class="font-bold no-margins">
-                            Likes
-                        </h3>
-                        <small>amount</small>
-                    </div>
-                </div>
-                <div class="widget yellow-bg p-lg text-center">
-                    <div class="m-b-md">
-                        <i class="fa fa-warning fa-4x"></i>
-                        <h1 class="m-xs">Alarm</h1>
-                        <h3 class="font-bold no-margins">
-                            Do
-                        </h3>
-                        <small>something</small>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
+        @await Component.InvokeAsync("Statistic4")
         <div class="row m-t-lg">
             <div class="col-lg-6">
                 <div class="ibox ">
@@ -447,9 +336,9 @@
         </div>
 
     </div>
-    
 
-    
+
+
 
     <!-- Mainly scripts -->
     <script src="~/inspinia-gh-pages/js/jquery-3.1.1.min.js"></script>
@@ -480,7 +369,7 @@
     <script src="~/inspinia-gh-pages/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
     <script src="~/inspinia-gh-pages/js/plugins/flot/jquery.flot.resize.js"></script>
     <script>
-    $(document).ready(function () {
+        $(document).ready(function () {
             var d1 = [[1262304000000, 6], [1264982400000, 3057], [1267401600000, 20434], [1270080000000, 31982], [1272672000000, 26602], [1275350400000, 27826], [1277942400000, 24302], [1280620800000, 24237], [1283299200000, 21004], [1285891200000, 12144], [1288569600000, 10577], [1291161600000, 10295]];
             var d2 = [[1262304000000, 5], [1264982400000, 200], [1267401600000, 1605], [1270080000000, 6129], [1272672000000, 11643], [1275350400000, 19055], [1277942400000, 30062], [1280620800000, 39197], [1283299200000, 37000], [1285891200000, 27000], [1288569600000, 21000], [1291161600000, 17000]];
 
