@@ -7,12 +7,40 @@
 <h1>Yazar Ajax İşlemleri</h1>
 <br />
 <button type="button" id="btngetlist" class="btn btn-outline-primary">Yazar Listesi</button>
-
+<button type="button" id="btngetbyid" class="btn btn-outline-success">Yazar Getir</button>
+<button type="button" id="btnaddwriter" class="btn btn-outline-info">Yazar Ekle</button>
+<button type="button" id="btndeletewriter" class="btn btn-outline-danger">Yazar Sil</button>
+<button type="button" id="btnupdatewriter" class="btn btn-outline-warning">Yazar Güncelle</button>
 <br />
-
+<br />
 <div id="writerlist">
     Buraya yazarlar gelecek
 </div>
+<br />
+<div id="writerget">
+    Buraya 1 yazar gelecek
+</div>
+<br />
+<div>
+    <input type="text" id="writerid" placeholder="Yazar ID Değerini Giriniz!" class="form-control" />
+</div>
+<br />
+<div>
+    <input type="text" class="form-control" id="txtwriterid" placeholder="Yazar ID" />
+    <br />
+    <input type="text" class="form-control" id="txtwritername" placeholder="Yazar Adı" />
+</div>
+<br />
+<div>
+    <input type="text" class="form-control" id="txtid" placeholder=" Silinecek Yazar ID" />
+</div>
+<br />
+<div>
+    <input type="text" id="txtid1" class="form-control" placeholder="Güncellenecek ID" />
+    <br />
+    <input type="text" id="txtwritername1" class="form-control" placeholder="Güncellenecek İsim" />
+</div>
+<br />
 
 @section scripts
 {
@@ -38,6 +66,7 @@
 
         $("#btngetbyid").click(x => {
             let id = $("#writerid").val();
+            console.log(id);
             $.ajax({
                 contentType: "application/json",
                 dataType: "json",
@@ -52,6 +81,7 @@
                 }
             });
         });
+
         $("#btnaddwriter").click(function () {
             let writer = {
                 Id: $("#txtwriterid").val(),
@@ -67,6 +97,7 @@
                 }
             });
         });
+
         $("#btndeletewriter").click(x => {
             let id = $("#txtid").val();
             $.ajax({
