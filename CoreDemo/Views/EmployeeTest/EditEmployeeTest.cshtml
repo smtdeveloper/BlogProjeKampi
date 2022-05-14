@@ -1,0 +1,26 @@
+﻿@model CoreDemo.Controllers.Class1
+
+@{
+    ViewData["Title"] = "EditEmployeeTest";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Api ile Personel Güncelleme</h1>
+
+<form method="post">
+
+    <label>#</label>
+    @Html.TextAreaFor(x => x.ID, new { @class = "form-control" })
+    <br />
+    <label>Personel</label>
+    @Html.TextAreaFor(x => x.Name, new { @class = "form-control" })
+    <br />
+    <button type="submit" class="btn btn-outline-success"> Güncelle</button>
+</form>
+
+@section scripts
+{
+    <script>
+
+    </script>
+}
