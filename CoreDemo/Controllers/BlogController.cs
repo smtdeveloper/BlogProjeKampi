@@ -151,8 +151,23 @@ namespace CoreDemo.Controllers
 
             return RedirectToAction("GetBlogListByWriter");
         }
+          
+        public IActionResult ChangeStatusBlog(int id)
+        {
+            var blogValue = bm.TGetById(id);
+            if (blogValue.Status)
+            {
+                blogValue.Status = false;
+            }
+            else
+            {
+                blogValue.Status = true;
+            }
+            bm.TUpdate(blogValue);
+            return RedirectToAction("GetBlogListByWriter");
+        }
 
-        
+
 
     }
 }

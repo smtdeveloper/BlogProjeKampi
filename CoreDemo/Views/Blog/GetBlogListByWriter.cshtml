@@ -89,6 +89,7 @@
                         <th>Durum</th>
                         <th>Sil</th>
                         <th>Düzenle</th>
+                        <th>Aktif / Pasif yap</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -107,6 +108,18 @@
                             </td>
                             <td><button id="AlerBtn" class="btn btn-outline-danger" onclick="showQuestionModelWithId(@item.BlogId)">Sil</button></td>
                             <td><a href="/Blog/BlogEdit/@item.BlogId" class="btn btn-outline-warning">Güncelle</a></td>
+                            <td>
+
+                                @if (item.Status)
+                                {
+                                    <a href="~/Blog/ChangeStatusBlog/@item.BlogId" id="Durum_@item.BlogId" class="btn btn-gradient-secondary">Pasif Yap</a>
+                                }
+                                else
+                                {
+                                    <a href="~/Blog/ChangeStatusBlog/@item.BlogId" id="Durum_@item.BlogId" class="btn btn-gradient-success">Aktif Yap</a>
+                                }
+
+                            </td>
                         </tr>
                     }
 
