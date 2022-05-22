@@ -8,11 +8,12 @@
 
 
                 @*@foreach (var item in Model)
-                {
-                    <img src="@item.Image" alt="Alternate Text" />
-                }*@
+        {
+            <img src="@item.Image" alt="Alternate Text" />
+        }*@
 
                 <h4 class="card-title">Hakkımda</h4>
+                <h1>Selam @ViewBag.user</h1>
                 @foreach (var item in Model)
                 {
                     <div class="d-flex">

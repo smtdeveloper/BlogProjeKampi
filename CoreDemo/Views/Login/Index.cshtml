@@ -1,4 +1,4 @@
-﻿
+﻿@model UserSignInModel
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/UserLayout.cshtml";
@@ -98,13 +98,13 @@
                     <div class="row justify-content-between text-left">
 
                         <div class="form-group col-sm-6 flex-column d-flex">
-                            <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label>
-                            <input type="email" id="exampleInputEmail1" class="form-control" name="Mail" placeholder="Email Giriniz" aria-describedby="emailHelp" required="">
+                            <label class="form-control-label px-3">Kullanıcı Adı<span class="text-danger"> *</span></label>
+                            <input asp-for="@Model.username" type="text" id="exampleInputEmail1" class="form-control" name="UserName" placeholder="Kullanıcı Adınızı Giriniz" aria-describedby="emailHelp" required="">
                         </div>
 
                         <div class="form-group col-sm-6 flex-column d-flex">
                             <label class="form-control-label px-3">Parola<span class="text-danger"> *</span></label>
-                            <input type="password" id="exampleInputPassword1 " class="form-control" name="Password" placeholder="Parolanızı Giriniz" required="">
+                            <input  asp-for="@Model.password" type="password" id="exampleInputPassword1 " class="form-control" name="Password" placeholder="Parolanızı Giriniz" required="">
 
 
                         </div>
