@@ -21,6 +21,7 @@ namespace CoreDemo.Controllers
         CategoryManager cm = new CategoryManager(new EfCategoryRepository());
         Context c = new Context();
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var result = bm.GetBlogsListWithCategory();
@@ -38,6 +39,7 @@ namespace CoreDemo.Controllers
             ViewBag.cv = categoryValues;
         }
 
+        [AllowAnonymous]
         public IActionResult BlogReadAll(int id)
         {
             ViewBag.i = id;

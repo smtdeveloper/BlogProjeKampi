@@ -3,6 +3,7 @@ using BusinessLayer.ValidationRules.FluentValidation;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace CoreDemo.Controllers
 {
+    [AllowAnonymous]
     public class ContactController : Controller
     {
         ContactManager cm = new ContactManager(new EfContactRepository());

@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,12 +10,13 @@ using System.Threading.Tasks;
 
 namespace CoreDemo.Controllers
 {
+     [AllowAnonymous]
     public class NewsLetterController : Controller
     {
         NewsLetterManager nm = new NewsLetterManager(new EfNewsLetterRepository());
 
         [HttpGet]
-        public PartialViewResult Index()
+        public IActionResult SubscribeMail()
         {
             return PartialView();
         }
@@ -24,7 +26,10 @@ namespace CoreDemo.Controllers
         {
             newsLetter.MailStatus = true;
             nm.AddNewsLetter(newsLetter);
-            return RedirectToAction("Index", "Blog");
+            return PartialView();
+         //return View();
+         // return RedirectToAction("Index", "Blog");
+       
         }
 
     }
