@@ -14,8 +14,10 @@ namespace CoreDemo.ViewComponents.Writer
         WriterManager wm = new WriterManager(new EfWriterRepository());
         public IViewComponentResult Invoke()
         {
-            var usermail = User.Identity.Name;
             Context c = new Context();
+            var username = User.Identity.Name;
+            var usermail = c.Users.Where(x => x.UserName == username).Select(y => y.Email).FirstOrDefault();
+            
             var writerId = c.Writers.Where(x => x.Mail == usermail).Select(y => y.WriterId).FirstOrDefault();
             var values = wm.GetWriterById(writerId);
             return View(values);

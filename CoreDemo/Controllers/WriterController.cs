@@ -58,8 +58,9 @@ namespace CoreDemo.Controllers
         [HttpGet]
         public IActionResult WriterEdit()
         {
-            var usermail = User.Identity.Name;
             Context c = new Context();
+            var username = User.Identity.Name;
+            var usermail = c.Users.Where(x => x.UserName == username).Select(y => y.Email).FirstOrDefault();
             var writerId = c.Writers.Where(x => x.Mail == usermail).Select(y => y.WriterId).FirstOrDefault();
             var result =  wm.TGetById(writerId);
             return View(result);
@@ -76,7 +77,7 @@ namespace CoreDemo.Controllers
                 writer.Status = true;
                 writer.Image = "test";
                 wm.TUpdate(writer);
-                return RedirectToAction("Index", "Dashboard");
+                return RedirectToAction("WriterEdit", "Writer");
             }
             else
             {
