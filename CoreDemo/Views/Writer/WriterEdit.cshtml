@@ -1,4 +1,4 @@
-﻿@model EntityLayer.Concrete.Writer
+﻿@model UserUpdateViewModel
 @{
     ViewData["Title"] = "WriterEdit";
     Layout = "~/Views/Shared/WriterLayout.cshtml";
@@ -78,8 +78,8 @@
                 <div class="card mb-3">
                     <div class="card-body">
 
-                        @Html.HiddenFor(x => x.WriterId, new { @class = "form-control" })
-                        <form class="forms-sample">
+                       
+                        <form method="post" class="forms-sample">
 
                             <div class="col-md-12 text-right">
                                 <button type="submit" class="btn btn-gradient-primary text-lg-right">   Güncelle  </button>
@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     <div class="form-group">
-                                        <input type="file" name="Image" />
+                                        <input type="text" asp-for="@Model.imageurl" class="form-control" />
                                     </div>
 
                                 </div>
@@ -108,23 +108,27 @@
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     <div class="form-group">
-                                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                                        @*@Html.TextBoxFor(x => x.namesurname, new { @class = "form-control" })*@
+                                        <input type="text" asp-for="@Model.namesurname" class="form-control" />
                                     </div>
 
                                 </div>
                             </div>
-                            <hr>
-                            <div class="row">
+
+                            <div class="row form-group">
                                 <div class="col-sm-3">
-                                    <h5 class="mb-0"> Cinsiyet </h5>
+                                    <h5 class="mb-0">Kullanıcı Adı  </h5>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     <div class="form-group">
-                                        @Html.TextBoxFor(x => x.Gender, new { @class = "form-control" })
-                                    </div>
+                                        <input type="text" asp-for="@Model.username" class="form-control" />
 
+                                    </div>
                                 </div>
                             </div>
+
+                            <hr>
+
 
 
                             <hr />
@@ -137,7 +141,7 @@
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     <div class="form-group">
-                                        @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+                                        <input type="email" asp-for="@Model.mail" class="form-control" />
                                     </div>
                                 </div>
                             </div>
@@ -148,56 +152,38 @@
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     <div class="form-group">
-                                        @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+                                        <input type="text" asp-for="@Model.phone" class="form-control" />
                                     </div>
                                 </div>
                             </div>
-                            <hr>
-                            <div class="row form-group">
-                                <div class="col-sm-3">
-                                    <h5 class="mb-0">Şehir / İlçe</h5>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <div class="form-group">
-                                        @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
-                                    </div>
-                                </div>
-                            </div>
+                           
+                           
                             <hr>
                             <!--   parola -->
-                            @Html.HiddenFor(x => x.Password, new { @class = "form-control" })
-                            <!--<div>
-                        <div class="row form-group">
-                            <div class="col-sm-3">
-                                <h5 class="mb-0">Parola</h5>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                <div class="form-group">
-                                    <label for="exapleInputPassword4"> Şifre  </label>
-
-                                </div>
-                            </div>
-                        </div>-->
-                            @*<div class="row">
-                            <div class="col-sm-3">
-                                <h5 class="mb-0">Parolayı Doğrula</h5>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="password" name="PasswordAgain" class="form-control" id="password2" placeholder="Tekrar Giriniz" required="" />
-                            </div>
-                        </div>*@
-                            <!--</div>-->
-
-                            <div class="row form-group">
-                                <div class="col-sm-3">
-                                    <h5 class="mb-0">Hakkımda </h5>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <div class="form-group">
-                                        @Html.TextAreaFor(x => x.About, 10, 3, new { @class = "form-control" })
+                           
+                            <div>
+                                <div class="row form-group">
+                                    <div class="col-sm-3">
+                                        <h5 class="mb-0">Parola</h5>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <div class="form-group">
+                                            <label for="exapleInputPassword4">Yeni Şifre oluştur  </label>
+                                            <input type="password" asp-for="@Model.password" class="form-control" />
+                                        </div>
                                     </div>
                                 </div>
+                                @*<div class="row">
+                                    <div class="col-sm-3">
+                                        <h5 class="mb-0">Parolayı Doğrula</h5>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="password" name="PasswordAgain" class="form-control" id="password2" placeholder="Tekrar Giriniz" required="" />
+                                    </div>
+                                </div>*@
                             </div>
+
+
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">

@@ -58,28 +58,11 @@ namespace CoreDemo.Controllers
             return RedirectToAction("Index", "Login");
         }
 
-        //[HttpPost]
-        //[AllowAnonymous]
-        //public async Task<IActionResult> Index(Writer writer)
-        //{
-        //    Context c = new Context();
-        //    var datavalue = c.Writers.FirstOrDefault(x => x.Mail == writer.Mail && x.Password == writer.Password);
-        //    if (datavalue != null)
-        //    {
-        //        var claims = new List<Claim>
-        //        {
-        //            new Claim(ClaimTypes.Name,writer.Mail)
-        //        };
-        //        var useridentity = new ClaimsIdentity(claims, "key");
-        //        ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
-        //        await HttpContext.SignInAsync(principal);
-        //        return RedirectToAction("Index", "Home");
-        //    }
-        //    else
-        //    {
-        //        return View();
-        //    }
-        //}
+        public IActionResult AccesDenied()
+        {
+            return View();
+        }
+
     }
 }
 
