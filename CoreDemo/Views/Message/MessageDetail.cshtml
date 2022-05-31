@@ -13,6 +13,7 @@
 @Html.TextBoxFor(x => x.Subject, new { @class = "form-control" })
 <br />
 @Html.Label("Mesaj içeriği")
-@Html.TextAreaFor(x => x.MessageDetails, 15,3, new { @class = "form-control" })
+@Html.TextAreaFor(x => x.MessageDetails, 15, 3, new { @class = "form-control" })
 <br />
-<button class="btn btn-facebook" > Mesajlara Dön </button>
+<a href="/Message/SendMessage/" class="btn btn-outline-info col-12">Yeni Mesaj Oluştur</a>
+

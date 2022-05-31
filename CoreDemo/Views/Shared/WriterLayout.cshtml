@@ -44,15 +44,15 @@
                                 <span class="availability-status online"></span>
                             </div>
                             <div class="nav-profile-text">
-                                <p class="mb-1 text-black">John Doe</p>
+                                <p class="mb-1 text-black">Yazar Adı</p>
                             </div>
                         </a>
                         <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                            <a class="dropdown-item" href="#">
+                            @*<a class="dropdown-item" href="#">
                                 <i class="mdi mdi-cached mr-2 text-success"></i> Activity Log
-                            </a>
+                            </a>*@
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="/Login/LogOut/">
                                 <i class="mdi mdi-logout mr-2 text-primary"></i> Signout
                             </a>
                         </div>
@@ -76,16 +76,12 @@
                         </a>
                         @await Component.InvokeAsync("WriterNotifications")
                     </li>
-                    <li class="nav-item nav-logout d-none d-lg-block">
-                        <a class="nav-link" href="#">
-                            <i class="mdi mdi-power"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item nav-settings d-none d-lg-block">
+                    
+                    @*<li class="nav-item nav-settings d-none d-lg-block">
                         <a class="nav-link" href="#">
                             <i class="mdi mdi-format-line-spacing"></i>
                         </a>
-                    </li>
+                    </li>*@
                 </ul>
                 <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
                     <span class="mdi mdi-menu"></span>

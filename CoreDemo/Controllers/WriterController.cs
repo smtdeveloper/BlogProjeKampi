@@ -71,7 +71,7 @@ namespace CoreDemo.Controllers
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
             UserUpdateViewModel model = new UserUpdateViewModel();
             
-            model.username = values.UserName;
+           // model.username = values.UserName;
             model.namesurname = values.NameSurname;
             model.imageurl = values.ImageUrl;
             model.phone = values.PhoneNumber;
@@ -83,7 +83,7 @@ namespace CoreDemo.Controllers
 
         [HttpPost]
         public async Task<IActionResult> WriterEdit(string PasswordAgain, UserUpdateViewModel model)
-        {
+        {   
             UserManager userManager = new UserManager(new EfUserRepository());
 
 
@@ -91,9 +91,13 @@ namespace CoreDemo.Controllers
             values.NameSurname = model.namesurname;
             values.ImageUrl = model.imageurl;
             values.Email = model.mail;
-            values.UserName = model.username;
+           // values.UserName = model.username;
             values.PhoneNumber = model.phone;
-            values.PasswordHash = _userManager.PasswordHasher.HashPassword(values, model.password);
+            if (model.password != null)
+            {
+                values.PasswordHash = _userManager.PasswordHasher.HashPassword(values, model.password);
+
+            }
             var result = await _userManager.UpdateAsync(values);
             return RedirectToAction("WriterEdit", "Writer");
 

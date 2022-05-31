@@ -51,10 +51,13 @@ namespace CoreDemo.Controllers
         public IActionResult GetBlogListByWriter()
         {
 
-            var usermail = User.Identity.Name;
-            var writerId = c.Writers.Where(x => x.Mail == usermail).Select(y => y.WriterId).FirstOrDefault();
-            var result =  bm.GetBlogsListWithWriter(writerId);
-            return View(result);
+            var username = User.Identity.Name;
+
+            var usermail = c.Users.Where(x => x.UserName == username).Select(y => y.Email).FirstOrDefault();
+            var writerID = c.Writers.Where(x => x.Mail == usermail).Select(y => y.WriterId).FirstOrDefault();
+
+            var values = bm.GetBlogsListWithWriter(writerID);
+            return View(values);
         }
 
         [HttpGet]
@@ -75,19 +78,18 @@ namespace CoreDemo.Controllers
         [HttpPost]
         public IActionResult BlogAdd(Blog blog)
         {
+            var username = User.Identity.Name;
+            var usermail = c.Users.Where(x => x.UserName == username).Select(y => y.Email).FirstOrDefault();
+            var writerID = c.Writers.Where(x => x.Mail == usermail).Select(y => y.WriterId).FirstOrDefault();
             BlogValidator bv = new BlogValidator();
             ValidationResult results = bv.Validate(blog);
             if (results.IsValid)
             {
                 blog.Status = true;
                 blog.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-
-                var usermail = User.Identity.Name;
-                var writerId = c.Writers.Where(x => x.Mail == usermail).Select(y => y.WriterId).FirstOrDefault();
-                blog.WriterId = writerId;
-
+                blog.WriterId = writerID;
                 bm.TAdd(blog);
-                return RedirectToAction("GetBlogListByWriter", "Blog");    
+                return RedirectToAction("GetBlogListByWriter", "Blog");
             }
             else
             {
@@ -96,14 +98,7 @@ namespace CoreDemo.Controllers
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
-
-            List<SelectListItem> categoryValues = (from x in cm.TGetAll()
-                                                   select new SelectListItem
-                                                   {
-                                                       Text = x.Name,
-                                                       Value = x.CategoryId.ToString()
-                                                   }).ToList();
-            ViewBag.cv = categoryValues;
+            GetCategoryList();
             return View();
         }
 
@@ -132,26 +127,21 @@ namespace CoreDemo.Controllers
         [HttpPost]
         public IActionResult BlogEdit(Blog blog)
         {
+            var username = User.Identity.Name;
+            var usermail = c.Users.Where(x => x.UserName == username).Select(y => y.Email).FirstOrDefault();
+            var writerID = c.Writers.Where(x => x.Mail == usermail).Select(y => y.WriterId).FirstOrDefault();
 
-            blog.Status = true;
+            //var value = bm.GetBlogByID(blog.BlogId);
+            blog.WriterId = writerID;
             blog.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-
-            var usermail = User.Identity.Name;
-            var writerId = c.Writers.Where(x => x.Mail == usermail).Select(y => y.WriterId).FirstOrDefault();
-
-            blog.WriterId = writerId;
+            blog.Status = true;
             bm.TUpdate(blog);
-
-           
-            List<SelectListItem> categoryValues = (from x in cm.TGetAll()
-                                                   select new SelectListItem
-                                                   {
-                                                       Text = x.Name,
-                                                       Value = x.CategoryId.ToString()
-                                                   }).ToList();
-            ViewBag.cv = categoryValues;
-
+            GetCategoryList();
             return RedirectToAction("GetBlogListByWriter");
+            
+            
+          
+          
         }
           
         public IActionResult ChangeStatusBlog(int id)
