@@ -24,7 +24,7 @@ namespace CoreDemo.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
-            var result = bm.GetBlogsListWithCategory();
+            var result = bm.GetBlogsListWithCategory().Where(x => x.Status == true).ToList();
             return View(result);
         }
 

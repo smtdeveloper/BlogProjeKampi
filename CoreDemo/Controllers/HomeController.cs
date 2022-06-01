@@ -1,4 +1,5 @@
 ﻿using CoreDemo.Models;
+using DataAccessLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,7 +13,7 @@ namespace CoreDemo.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+        Context c = new Context();
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -20,6 +21,7 @@ namespace CoreDemo.Controllers
 
         public IActionResult Index()
         {
+            
             return View();
         }
 
