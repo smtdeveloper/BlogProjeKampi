@@ -12,8 +12,8 @@
     <tr>
         <th> # </th>
         <th> Kategori Adı </th>
-        <th> Pasif  Yap</th>
-        <th> Aktif Yap </th>
+        <th> Durum </th>
+        <th> Pasif / Aktif  Yap</th>
         <th> Düzenle</th>
 
     </tr>
@@ -23,9 +23,26 @@
         <tr>
             <td>@item.CategoryId </td>
             <td>@item.Name </td>
-            <td> <a href="/Admin/Category/CategoryPassive/@item.CategoryId/" onclick="return confirm('Emin misiniz ?  ' )" class="btn btn-secondary"> Pasif Yap </a> </td>
-            <td> <a href="#" class="btn btn-success"> Aktif Yap </a> </td>
-            <td> <a href="#" class="btn btn-danger"> Düzenle </a> </td>
+            @*<td> <a href="/Admin/Category/CategoryPassive/@item.CategoryId/" onclick="return confirm('Emin misiniz ?  ' )" class="btn btn-secondary"> Pasif Yap </a> </td>*@
+        <td>
+            @if (item.Status)
+            {<span class="badge badge-success">Aktif</span> }
+            else
+            { <span class="badge badge-secondary">Pasif</span>}
+        </td>
+            <td>
+
+                @if (item.Status)
+                {
+                    <a href="~/Admin/Category/ChangeStatusCategory/@item.CategoryId" id="Durum_@item.CategoryId" class="btn btn-secondary">Pasif Yap</a>
+                }
+                else
+                {
+                    <a href="~/Admin/Category/ChangeStatusCategory/@item.CategoryId"  id="Durum_@item.CategoryId" class="btn btn-success">Aktif Yap</a>
+                }
+
+            </td>
+            <td> <a href="~/Admin/Category/UpdateCategory/@item.CategoryId" class="btn btn-danger"> Düzenle </a> </td>
         </tr>
     }
 </table>

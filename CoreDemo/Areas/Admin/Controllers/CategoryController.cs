@@ -1,5 +1,7 @@
-﻿using BusinessLayer.Concrete;
+﻿
+using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules.FluentValidation;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
@@ -20,7 +22,7 @@ namespace CoreDemo.Areas.Admin.Controllers
 
         public IActionResult Index(int page = 1)
         {
-            var values = cm.TGetAll().ToPagedList(page,3);
+            var values = cm.TGetAll().ToPagedList(page,5);
             return View(values);
         }
 
@@ -51,12 +53,34 @@ namespace CoreDemo.Areas.Admin.Controllers
             return View();
         }
 
-        public IActionResult CategoryPassive(int id)
+        public IActionResult ChangeStatusCategory(int id)
         {
             var value = cm.TGetById(id);
-            value.Status = false;
+            if (value.Status)
+            {
+                value.Status = false;
+            }
+            else
+            {
+                value.Status = true;
+            }
             cm.TUpdate(value);
 
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult UpdateCategory(int id)
+        {
+            var value = cm.TGetById(id);
+            return View(value);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateCategory(Category category)
+        {
+            category.Status = true;
+            cm.TUpdate(category);
             return RedirectToAction("Index");
         }
 

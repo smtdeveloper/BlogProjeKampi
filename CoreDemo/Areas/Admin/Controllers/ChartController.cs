@@ -35,7 +35,7 @@ namespace CoreDemo.Areas.Admin.Controllers
             list.Add(new CategoryClass
             {
                 categoryname = "Sinema",
-                categorycount = 2
+                categorycount = 12
             });
             return Json(new { jsonlist = list });
         }
