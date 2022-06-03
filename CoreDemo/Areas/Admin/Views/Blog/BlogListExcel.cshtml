@@ -6,14 +6,39 @@
 
 <h1>BlogListExcel</h1>
 
-<button class="btn btn-success" onclick="DowlandExcel()" > Excel Dosyasını indir   </button>
+<div class="col-12 row">
+
+    <div class="col-6 p-2">
+        <button class="btn btn-success p-3 m-2" onclick="StaticDowlandExcel()"> Static Excel Dosyasını indir   </button>
+        <button class="btn btn-success p-3 m-2" onclick="DinamikDowlandExcel()"> Dinamik Excel Dosyasını indir   </button>
+
+    </div>
+
+    <div class="col-6">
+    </div>
 
 
-<script>
+</div>
 
-    function DowlandExcel() {
 
-        window.open("/Admin/Blog/ExportStaticExcelBlogList");
-    }
 
-</script>
+
+@section scripts
+{
+
+
+    <script>
+
+        function StaticDowlandExcel() {
+
+            window.open("/Admin/Blog/ExportStaticExcelBlogList");
+        }
+
+        function DinamikDowlandExcel() {
+
+            window.open("/Admin/Blog/ExportDinamikExcelBlogList");
+        }
+
+    </script>
+
+} 

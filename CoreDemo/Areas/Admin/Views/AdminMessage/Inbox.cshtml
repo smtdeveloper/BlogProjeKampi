@@ -1,0 +1,124 @@
+﻿@using EntityLayer.Concrete
+@model List<Message2>
+
+@{
+    ViewData["Title"] = "Inbox";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+
+
+<body>
+
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="ibox ">
+                    <div class="ibox-content mailbox-content">
+                        <div class="file-manager">
+                            <a class="btn btn-block btn-primary compose-mail" href="/Admin/AdminMessage/ComposeMessage/">Yeni Mesaj</a>
+                            <div class="space-25"></div>
+                            <h5>Klasörler</h5>
+                            <ul class="folder-list m-b-md" style="padding: 0">
+                                <li><a href="/Admin/AdminMessage/Inbox/"> <i class="fa fa-inbox "></i> Gelen Mesajlar <span class="label label-warning float-right">@ViewBag.InboxCount</span> </a></li>
+                                <li><a href="/Admin/AdminMessage/SendBox/"> <i class="fa fa-envelope-o"></i> Giden Mesajlar</a></li>
+                                <li><a href="mailbox.html"> <i class="fa fa-certificate"></i> Önemli Mesajlar</a></li>
+                                <li><a href="mailbox.html"> <i class="fa fa-file-text-o"></i> Taslaklar <span class="label label-danger float-right">2</span></a></li>
+                                <li><a href="mailbox.html"> <i class="fa fa-trash-o"></i> Çöp Kutusu</a></li>
+                            </ul>
+                            <h5>Kategoriler</h5>
+                            <ul class="category-list" style="padding: 0">
+                                <li><a href="#"> <i class="fa fa-circle text-navy"></i> İş </a></li>
+                                <li><a href="#"> <i class="fa fa-circle text-danger"></i> Dokümanlar </a></li>
+                                <li><a href="#"> <i class="fa fa-circle text-primary"></i> Sosyal </a></li>
+                                <li><a href="#"> <i class="fa fa-circle text-info"></i> Tanıtımlar</a></li>
+                                <li><a href="#"> <i class="fa fa-circle text-warning"></i> Talepler</a></li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 animated fadeInRight">
+                <div class="mail-box-header">
+
+                    <form method="get" action="index.html" class="float-right mail-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control form-control-sm" name="search" placeholder="Aranacak Mesaj">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-sm btn-primary">
+                                    Ara
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <h2>
+                        Gelen Mesajlar(0)
+                    </h2>
+                    <div class="mail-tools tooltip-demo m-t-md">
+                        <div class="btn-group float-right">
+                            <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>
+                            <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
+
+                        </div>
+                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Yenile"><i class="fa fa-refresh"></i> Yenile</button>
+                        <button class="btn btn-white btn-sm bg-success" data-toggle="tooltip" data-placement="top" title="Okunmuş olarak işaretle"><i class="fa fa-eye"></i> </button>
+                        <button class="btn btn-white btn-sm bg-warning" data-toggle="tooltip" data-placement="top" title="Önemli olarak işaretle"><i class="fa fa-exclamation"></i> </button>
+                        <button class="btn btn-white btn-sm bg-danger" data-toggle="tooltip" data-placement="top" title="Çöp kutusuna taşı"><i class="fa fa-trash-o"></i> </button>
+
+                    </div>
+                </div>
+                <div class="mail-box">
+
+                    <table class="table table-hover table-mail">
+                        <tbody>
+                            <tr>
+                                <th></th>
+                                <th>Gönderen</th>
+                                <th>Konu</th>
+                                <th>Durum</th>
+                                <th  class="text-right mail-date">Tarih</th>
+                               
+                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="read">
+                                    
+                                    <td class="check-mail">
+                                        <input type="checkbox" class="i-checks">
+                                    </td>
+                                    <td class="mail-ontact"><a href="mail_detail.html">@item.SenderUser.Name</a></td>
+                                    <td class="mail-subject"><a href="mail_detail.html">@item.Subject</a></td>
+                                    <td>
+                                        @if (item.MessageStatus)
+                                        {
+                                            <span class="badge badge-info">Mesaj Okundu</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-success">Mesaj Okunmadı</span>
+                                        }
+                                    </td>
+                                    <td class="text-right mail-date">@(((DateTime)item.MessageDate).ToString("dd MMMM yyyy"))</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+@section scripts{
+
+
+}

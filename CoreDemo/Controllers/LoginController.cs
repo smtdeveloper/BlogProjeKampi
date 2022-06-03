@@ -41,7 +41,7 @@ namespace CoreDemo.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.username, model.password, false, true);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Dashboard");
+                    return RedirectToAction("Index", "Blog");
                 }
                 else
                 {
