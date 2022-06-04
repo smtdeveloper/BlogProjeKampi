@@ -14,7 +14,7 @@
 
     <div class="wrapper wrapper-content">
         <div class="row">
-            <div class="col-lg-3">
+            @*<div class="col-lg-3">
                 <div class="ibox ">
                     <div class="ibox-content mailbox-content">
                         <div class="file-manager">
@@ -40,8 +40,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-9 animated fadeInRight">
+            </div>*@
+            <div class="col-lg-12 animated fadeInRight">
                 <div class="mail-box-header">
 
                     <form method="get" action="index.html" class="float-right mail-search">
@@ -79,13 +79,13 @@
                                 <th>Gönderen</th>
                                 <th>Konu</th>
                                 <th>Durum</th>
-                                <th  class="text-right mail-date">Tarih</th>
-                               
+                                <th class="text-right mail-date">Tarih</th>
+
                             </tr>
                             @foreach (var item in Model)
                             {
                                 <tr class="read">
-                                    
+
                                     <td class="check-mail">
                                         <input type="checkbox" class="i-checks">
                                     </td>
@@ -106,6 +106,8 @@
                             }
                         </tbody>
                     </table>
+                    <br />
+                    <a class="btn btn-block btn-primary compose-mail" href="/Admin/AdminMessage/ComposeMessage/">Yeni Mesaj</a>
 
 
                 </div>

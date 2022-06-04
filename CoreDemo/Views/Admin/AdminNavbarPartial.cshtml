@@ -28,11 +28,14 @@
                 <a href="/Admin/Chart/Index/"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Grafikler</span>  </a>
             </li>
             <li>
-                <a href="/Admin/AdminMessage/Inbox/"><i class="fa fa-envelope"></i> <span class="nav-label">Mesajlar </span><span class="label label-warning float-right">00/00</span></a>
+                <a href="/Admin/AdminMessage/Inbox/"><i class="fa fa-envelope"></i> <span class="nav-label">Mesajlar </span><span class="label label-warning float-right">@ViewBag.InboxCount</span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a href="/Admin/AdminMessage/Inbox/">Gelen Kutusu</a></li>
+                    <li><a href="/Admin/AdminMessage/Inbox/">Gelen Kutusu <span class="label label-warning float-right">@ViewBag.InboxCount</span> </a>  </li>
                     <li><a href="/Admin/AdminMessage/Sendbox/">Giden Kutusu</a></li>
                     <li><a href="/Admin/AdminMessage/ComposeMessage/">Yeni Mesaj Oluştur</a></li>
+                    <li><a href="mailbox.html"> <i class="fa fa-certificate"></i> Önemli Mesajlar</a></li>
+                    <li><a href="mailbox.html"> <i class="fa fa-file-text-o"></i> Taslaklar <span class="label label-danger float-right">2</span></a></li>
+                    <li><a href="mailbox.html"> <i class="fa fa-trash-o"></i> Çöp Kutusu</a></li>
                 </ul>
             </li>
 
