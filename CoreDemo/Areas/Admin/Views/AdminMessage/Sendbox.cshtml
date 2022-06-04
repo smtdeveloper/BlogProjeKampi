@@ -73,6 +73,13 @@
 
                     <table class="table table-hover table-mail">
                         <tbody>
+                            <tr>
+                                <th></th>
+                                <th>Alıcının ismi</th>
+                                <th>Alıcının maili</th>
+                                <th>Konu</th>
+                                <th class="text-right mail-date" >Tarih</thclass="text-right>
+                            </tr>
                             @foreach (var item in Model)
                             {
                                 <tr class="read">
@@ -80,6 +87,7 @@
                                         <input type="checkbox" class="i-checks">
                                     </td>
                                     <td class="mail-ontact"><a href="mail_detail.html">@item.ReceiverUser.Name</a></td>
+                                    <td class="mail-ontact"><a href="mail_detail.html">@item.ReceiverUser.Mail</a></td>
                                     <td class="mail-subject"><a href="mail_detail.html">@item.Subject</a></td>
                                     <td class="text-right mail-date">@(((DateTime)item.MessageDate).ToString("dd MMMM yyyy"))</td>
                                 </tr>
