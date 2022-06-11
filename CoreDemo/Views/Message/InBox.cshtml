@@ -107,7 +107,7 @@
                             <td><a href="/Message/MessageDetail/@item.MessageID" class="btn btn-outline-warning">Mesajı Aç</a></td>
                             <td><a href="/Message/SendMessage/@item.MessageID" class="btn btn-outline-success">Mesaj gönder</a></td>
                             @*<td><a href="~/Message/DeleteMessage/@item.MessageID" id="Durum_@item.MessageID" onclick="deleteMessage()"  class="btn btn-outline-danger">Sil</a></td>*@
-                            <td> <button class="btn btn-outline-danger" onclick="deleteMessage(@item.MessageID)"> Sill </button></td>
+                            <td> <button class="btn btn-outline-danger" onclick="deleteMessage(@item.MessageID)"> Sil </button></td>
                         </tr>
 
                     }
@@ -119,18 +119,6 @@
             <br />
             <a href="/Message/SendMessage/" class="btn btn-outline-info col-12">Yeni Mesaj Oluştur</a>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
 </div>
 
@@ -165,6 +153,7 @@
                         )
 
                         setTimeout('', 3000);
+
                         location.reload();
                     }
 

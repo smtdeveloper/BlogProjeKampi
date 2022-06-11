@@ -31,7 +31,7 @@ namespace CoreDemo.Controllers
         {
             comment.Date = DateTime.Parse(DateTime.Now.ToShortDateString());
             comment.Status = true;
-            cm.Add(comment);
+            cm.TAdd(comment);
             return RedirectToAction("BlogReadAll", "Blog", new { id = comment.BlogId});
         }
 

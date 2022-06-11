@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace CoreDemo.Controllers
 {
@@ -22,9 +23,9 @@ namespace CoreDemo.Controllers
         Context c = new Context();
 
         [AllowAnonymous]
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            var result = bm.GetBlogsListWithCategory().Where(x => x.Status == true).ToList();
+            var result = bm.GetBlogsListWithCategory().Where(x => x.Status == true).ToList().ToPagedList(page, 6);
             return View(result);
         }
 

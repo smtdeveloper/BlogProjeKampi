@@ -91,7 +91,7 @@
             <div class="card">
 
                 <h5 class="text-center mb-4">
-                    Hoş Geldin. :)
+                    Hoş Geldin
                 </h5>
                 <form method="post" class="form-card">
 
@@ -99,12 +99,12 @@
 
                         <div class="form-group col-sm-6 flex-column d-flex">
                             <label class="form-control-label px-3">Kullanıcı Adı<span class="text-danger"> *</span></label>
-                            <input asp-for="@Model.username" type="text" id="exampleInputEmail1" class="form-control" name="UserName" placeholder="Kullanıcı Adınızı Giriniz" >
+                            <input asp-for="@Model.username" type="text" id="exampleInputEmail1" class="form-control" name="UserName" placeholder="Kullanıcı Adınızı Giriniz">
                         </div>
 
                         <div class="form-group col-sm-6 flex-column d-flex">
                             <label class="form-control-label px-3">Parola<span class="text-danger"> *</span></label>
-                            <input  asp-for="@Model.password" type="password" id="exampleInputPassword1 " class="form-control" name="Password" placeholder="Parolanızı Giriniz" required="">
+                            <input asp-for="@Model.password" type="password" id="exampleInputPassword1 " class="form-control" name="Password" placeholder="Parolanızı Giriniz" required="">
 
 
                         </div>
@@ -117,7 +117,7 @@
 
                     </div>
 
-                    <button type="submit" class="btn btn-primary submit mb-4">Giriş Yap</button>
+                    <button onclick="Login()" type="submit" class="btn btn-primary submit mb-4">Giriş Yap</button>
                     <H5><a href="/Register/Index"> Bir Hesabın Yok Mu?</a></H5>
 
                 </form>
@@ -134,12 +134,14 @@
 
     function Login() {
 
+
         if (data == true) {
             alert("Giris Basarılı")
         } else {
+
             alert("Tekrar Dene")
         }
-       
-    } 
+
+    }
 
 </script>

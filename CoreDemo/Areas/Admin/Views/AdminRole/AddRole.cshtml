@@ -1,0 +1,25 @@
+﻿@using CoreDemo.Areas.Admin.Models
+@model RoleViewModel
+
+@{
+    ViewData["Title"] = "AddRole";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Rol Ekleme Sayfası</h1>
+<form method="post">
+    <div class="form-group">
+        <label>Rol Başlığı</label>
+        <input type="text" name="name" class="form-control" />
+    </div>
+    <button class="btn btn-outline-info col-12">Kaydet</button>
+</form>
+
+@section scripts {
+
+    <script>
+
+    </script>
+
+}
+

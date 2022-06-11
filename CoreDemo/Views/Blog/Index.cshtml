@@ -1,5 +1,9 @@
-﻿@using EntityLayer.Concrete
-@model List<Blog>
+﻿@*@using EntityLayer.Concrete
+    @model List<Blog>*@
+
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<EntityLayer.Concrete.Blog>
 
 @{
     ViewData["Title"] = "Index";
@@ -15,9 +19,35 @@
 <!-- Blog ındex -->
 
 <style>
-    body {
-        background-color: whitesmoke ;
+     body {
+        background-color: whitesmoke;
     }
+
+    .ul.pagination {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
+
+    ul.pagination li {
+        display: inline;
+    }
+
+        ul.pagination li a {
+            border: 1px solid #ccc;
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+        }
+
+            ul.pagination li a.active {
+            }
+
+            ul.pagination li a:hover:not(.active) {
+                background-color: #ddd;
+            }
 </style>
 
 <section class="main-content-w3layouts-agileits">
@@ -31,7 +61,7 @@
                     {
                         <div class="col-lg-4 card">
                             <a href="/blog/BlogReadAll/@item.BlogId/">
-                                <img src="@item.Image"  class="card-img-top img-fluid m-2" alt="">
+                                <img src="@item.Image" class="card-img-top img-fluid m-2" alt="">
                             </a>
                             <div class="card-body">
                                 <ul class="blog-icons my-3">
@@ -61,11 +91,31 @@
                                 <a href="/blog/BlogReadAll/@item.BlogId/" class="btn btn-primary read-m">Devamını Oku...</a>
                             </div>
                         </div>
-                        <br /> <br /> <br />
+                        <br /> <br />
+
+                        <br />
                     }
+
                 </div>
-               
+
             </div>
+            <br />
+
+
+
+
         </div>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+
+                @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+
+            </ul>
+        </nav>
+
+       
     </div>
+
+
 </section>

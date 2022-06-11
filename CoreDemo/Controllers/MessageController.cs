@@ -22,10 +22,10 @@ namespace CoreDemo.Controllers
             var usermail = c.Users.Where(x => x.UserName == username).Select(y => y.Email).FirstOrDefault();
             var writerID = c.Writers.Where(x => x.Mail == usermail).Select(y => y.WriterId).FirstOrDefault();
             var values = mm.GetInboxListByWriter(writerID);
-            if (values.Count() > 3)
-            {
-                values = values.TakeLast(3).ToList();
-            }
+            //if (values.Count() > 3)
+            //{
+            //    values = values.TakeLast(3).ToList();
+            //}
             return View(values);
         }
 

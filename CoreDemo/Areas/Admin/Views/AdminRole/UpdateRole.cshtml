@@ -1,0 +1,73 @@
+﻿@using CoreDemo.Areas.Admin.Models
+@model RoleUpdateViewModel
+
+@{
+    ViewData["Title"] = "UpdateRole";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Rol Düzenleme Sayfası</h1>
+
+<form method="post">
+    <div class="form-group">
+        <div class="row">
+            <input type="hidden" name="Id" class="form-control" value="@Model.Id" />
+            <input type="hidden" name="Id" class="form-control" value="@Model.IsDelete" />
+            <div class="col-3">
+                <h3> Rol Başlığı </h3>
+                <input type="text" name="name" class="form-control" value="@Model.name" />
+            </div>
+
+            <div class="col-3">
+                <h3> Aktif / Pasif Yap </h3>
+               
+
+                    <select @Model.IsDelete name="IsDelete" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                        <option value="0">Aktif Yap</option>
+                        <option value="1">Pasif Yap</option>
+
+                    </select>
+
+               
+
+
+
+            </div>
+            <div class="col-3">
+                <h3> Durumu </h3>
+
+                @if (Model.IsDelete == 0)
+                {
+                    <h2> <b class="text-success"> Aktif </b>  </h2>
+                }
+                else if (Model.IsDelete == 1)
+                {
+                    <h2> Pasif </h2>
+                }
+                else
+                {
+                    <h2> Bilinmiyor </h2>
+
+                }
+            </div>
+
+            <div class="col-3">
+                <h3> Güncelle </h3>
+                <button class="btn btn-success">Güncelle</button>
+
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+    <br />
+</form>
+
+@section scripts {
+
+
+
+}

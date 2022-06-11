@@ -1,12 +1,83 @@
 ﻿@model UserSingUpModel
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
 }
 
 
 <!DOCTYPE html>
 <html>
+<style>
+
+    body {
+        color: #000;
+        overflow-x: hidden;
+        height: 100%;
+        /*background-image: url("~/web/images/1.jpg");*/
+        background-color: ghostwhite;
+        background-repeat: no-repeat;
+        background-size: 100% 100%
+    }
+
+    .card {
+        padding: 30px 40px;
+        margin-top: 60px;
+        margin-bottom: 60px;
+        border: none !important;
+        box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2)
+    }
+
+    .blue-text {
+        color: #00BCD4
+    }
+
+    .form-control-label {
+        margin-bottom: 0
+    }
+
+    input,
+    textarea,
+    button {
+        padding: 8px 15px;
+        border-radius: 5px !important;
+        margin: 5px 0px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        font-size: 18px !important;
+        font-weight: 300
+    }
+
+        input:focus,
+        textarea:focus {
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            border: 1px solid #00BCD4;
+            outline-width: 0;
+            font-weight: 400
+        }
+
+    .btn-block {
+        text-transform: uppercase;
+        font-size: 15px !important;
+        font-weight: 400;
+        height: 43px;
+        cursor: pointer
+    }
+
+        .btn-block:hover {
+            color: #fff !important
+        }
+
+    button:focus {
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        outline-width: 0
+    }
+</style>
+
 
 <head>
 
@@ -28,9 +99,9 @@
     <div class="middle-box text-center loginscreen   animated fadeInDown">
         <div>
             <div>
-                 
-                <h1 class="logo-name" >Blog</h1>
-                <h3 class="text-danger" > SMTcoder</h3>
+
+                <h1 class="logo-name">Blog</h1>
+                <h3 class="text-danger"> SMTcoder</h3>
 
             </div>
             <h3>Kayıt Ekranı</h3>
@@ -67,12 +138,12 @@
 
                 </div>
                 <div class="checkbox i-checks">
-                    <input type="checkbox" ><i></i>
+                    <input type="checkbox"><i></i>
                     Kullanım şartlarını okudum kabul ediyorum.
 
                 </div>
                 <br />
-                <span  class="text-danger"></span>
+                <span class="text-danger"></span>
                 <button type="submit" class="btn btn-outline-primary block full-width m-b">Kayıt Ol</button>
 
                 <h3 class="text-muted text-center"><small>Hesabınız var mı?</small></h3>
