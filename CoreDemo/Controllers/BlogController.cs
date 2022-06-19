@@ -15,7 +15,8 @@ using X.PagedList;
 
 namespace CoreDemo.Controllers
 {
-  
+    [Authorize(Roles = "Admin,Moderator,Writer")]
+
     public class BlogController : Controller
     {
         BlogManager bm = new BlogManager(new EfBlogRepository());

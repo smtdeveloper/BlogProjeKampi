@@ -25,6 +25,10 @@ namespace CoreDemo.Controllers
             return View(values);
         }
 
+        public IActionResult DeleteNotification()
+        {
+            return View();
+        }
 
     }
 }

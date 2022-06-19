@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace CoreDemo.Controllers
 {
+    [Authorize(Roles = "Admin,Moderator,Writer")]
+
     [AllowAnonymous]
     public class CommentController : Controller
     {

@@ -107,7 +107,7 @@
         </div>
 
         <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
+            <ul class="pagination justify-content-center pagination-lg">
 
                 @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
 

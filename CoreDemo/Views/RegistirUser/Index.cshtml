@@ -4,10 +4,13 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/UserLayout.cshtml";
 }
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
 
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-<!DOCTYPE html>
-<html>
+<!------ Yazar kayıt ol  ---------->
+
 <style>
 
     body {
@@ -79,6 +82,11 @@
 </style>
 
 
+
+<!DOCTYPE html>
+<html>
+
+
 <head>
 
     <meta charset="utf-8">
@@ -96,9 +104,10 @@
 
 <body class="gray-bg">
 
-    <div class="middle-box text-center loginscreen   animated fadeInDown">
+
+    @*<div>
         <div>
-            <div>
+            <div class="middle-box text-center loginscreen   animated fadeInDown">
 
                 <h1 class="logo-name">Blog</h1>
                 <h3 class="text-danger"> SMTcoder</h3>
@@ -133,7 +142,6 @@
 
                 <div class="form-group">
                     <span asp-validation-for="@Model.ConfirmPassword" class="text-danger"></span>
-
                     <input type="password" class="form-control" asp-for="@Model.ConfirmPassword" placeholder="Şifre Tekrar" required="">
 
                 </div>
@@ -152,21 +160,107 @@
             <div class="text-danger" asp-validation-summary="ModelOnly"></div>
             <p class="m-t"> <small>Creative Blog || Tüm Hakları Saklıdır &copy; @DateTime.Now.Year</small> </p>
         </div>
-    </div>
+    </div>*@
+
+
+
+    <div class="container-fluid px-1 py-5 mx-auto">
+        <div class="row d-flex justify-content-center">
+            <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+                
+                    <h1> Kayıt Ol </h1>
+
+                    <div class="card">
+
+                        <form class="m-t" role="form" asp-action="Index">
+                            <div class="row justify-content-between text-left">
+
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label class="form-control-label px-3">Ad Soyad<span class="text-danger"> *</span></label>
+                                    <span asp-validation-for="@Model.NameSurname" class="text-danger"></span>
+
+                                    <input type="text" class="form-control" asp-for="@Model.NameSurname" placeholder="Adınız Soyadınız">
+
+                                </div>
+
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label class="form-control-label px-3">Parola<span class="text-danger"> *</span></label>
+                                    <span asp-validation-for="@Model.Password" class="text-danger"></span>
+                                    <input type="password" class="form-control" asp-for="@Model.Password" placeholder="Şifre" required="">
+                                </div>
+
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label>
+                                    <span asp-validation-for="@Model.Mail" class="text-danger"></span>
+                                    <input type="email" class="form-control" asp-for="@Model.Mail" placeholder="Email">
+                                </div>
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label class="form-control-label px-3">Parolayı Doğrula <span class="text-danger"> *</span></label>
+
+                                    <span asp-validation-for="@Model.ConfirmPassword" class="text-danger"></span>
+                                    <input type="password" class="form-control" asp-for="@Model.ConfirmPassword" placeholder="Şifre Tekrar" required="">
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-between text-left">
+
+                                <div class="form-group col-sm-6 flex-column d-flex">
+                                    <label class="form-control-label px-3">Kullanıcı Adı<span class="text-danger"> *</span></label>
+                                    <span asp-validation-for="@Model.UserName" class="text-danger"></span>
+
+                                    <input type="text" class="form-control" asp-for="@Model.UserName" placeholder="Kullanıcı Adı">
+
+                                </div>
+
+                                <div class="form-group col-sm-6 flex-column d-flex p-4 ">
+                                    <button type="submit" class="btn btn-outline-primary block full-width m-b">Kayıt Ol</button>
+
+
+                                </div>
+
+
+                            </div>
+                            <div class="checkbox i-checks">
+                                <input type="checkbox"><i> </i>
+                                Kullanım şartlarını okudum kabul ediyorum.
+
+                            </div>
+                            <br />
+                            <span class="text-danger"></span>
+
+
+                            <h3 class="text-muted text-center"><small>Hesabınız var mı?</small></h3>
+                            <a class="btn btn-sm btn-dark btn-block" href="/Login/Index/">Giriş Yap</a>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+ 
 
     <!-- Mainly scripts -->
     <script src="~/inspinia-gh-pages/js/jquery-3.1.1.min.js"></script>
     <script src="~/inspinia-gh-pages/js/popper.min.js"></script>
     <script src="~/inspinia-gh-pages/js/bootstrap.js"></script>
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <!-- iCheck -->
     <script src="~/inspinia-gh-pages/js/plugins/iCheck/icheck.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $('.i-checks').iCheck({
-                checkboxClass: 'icheckbox_square-green',
-                radioClass: 'iradio_square-green',
-            });
-        });</script>
+                        //$(document).ready(function () {
+                        //    $('.i-checks').iCheck({
+                        //        checkboxClass: 'icheckbox_square-green',
+                        //        radioClass: 'iradio_square-green',
+                        //    });
+                        //});
+
+
+
+    </script>
 </body>
 
 </html>

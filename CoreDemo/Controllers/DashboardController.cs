@@ -1,12 +1,15 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
 
 namespace CoreDemo.Controllers
 {
+    [Authorize(Roles = "Admin,Moderator,Writer")]
+
     public class DashboardController : Controller
     {
 
