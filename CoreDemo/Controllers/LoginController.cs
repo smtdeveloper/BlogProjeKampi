@@ -30,7 +30,8 @@ namespace CoreDemo.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+
+            return View(new UserSignInModel());
         }
 
         [HttpPost]

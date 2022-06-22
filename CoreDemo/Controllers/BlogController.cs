@@ -26,7 +26,7 @@ namespace CoreDemo.Controllers
         [AllowAnonymous]
         public IActionResult Index(int page = 1)
         {
-            var result = bm.GetBlogsListWithCategory().Where(x => x.Status == true).ToList().ToPagedList(page, 6);
+            var result = bm.GetBlogsListWithCategory().Where(x => x.Status == true).ToList().ToPagedList(page, 12);
             return View(result);
         }
 

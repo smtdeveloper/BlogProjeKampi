@@ -17,9 +17,9 @@
                     <a href="/Blog/BlogReadAll/@item.BlogId">@item.Title </a>
                 </h5>
                 <div class="sub-meta">
-                    <span>
-                        <i class="far fa-clock"></i> @item.CreateDate
-                    </span>
+                    <h5>
+                        <i class="far fa-clock"></i> @item.CreateDate.ToShortDateString()
+                    </h5>
                 </div>
             </div>
         </div>

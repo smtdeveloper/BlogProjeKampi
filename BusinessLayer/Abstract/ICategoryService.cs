@@ -9,5 +9,6 @@ namespace BusinessLayer.Abstract
 {
    public interface ICategoryService : IGenericService<Category>
     {
+        ICollection<Category> GetAllStatusActive();
     }
 }

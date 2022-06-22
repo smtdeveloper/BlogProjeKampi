@@ -9,7 +9,7 @@ namespace DataAccessLayer.Respositories
 {
     public class GenericRepository<T> : IGenericDal<T> where T : class
     {
-        Context c = new Context();  
+       protected Context c = new Context();  
 
         public void Add(T entity)
         {

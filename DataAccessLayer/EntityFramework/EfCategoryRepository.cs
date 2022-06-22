@@ -9,8 +9,11 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
-   public class EfCategoryRepository : GenericRepository<Category> , ICategoryDal
+    public class EfCategoryRepository : GenericRepository<Category>, ICategoryDal
     {
-
+        public ICollection<Category> GetAllStatusActive()
+        {
+           return c.Categories.Where(_category => _category.Status == true).ToList();
+        }
     }
 }

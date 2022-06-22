@@ -25,7 +25,7 @@ namespace CoreDemo.Areas.Admin.Controllers
 
         public IActionResult Index(int page = 1)
         {
-            var values = cm.TGetAll().ToPagedList(page,5);
+            var values = cm.TGetAll().ToPagedList(page,18);
             return View(values);
         }
 

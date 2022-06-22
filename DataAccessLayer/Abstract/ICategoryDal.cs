@@ -9,6 +9,6 @@ namespace DataAccessLayer.Abstract
 {
    public interface ICategoryDal : IGenericDal<Category>
     {
-    
+        ICollection<Category> GetAllStatusActive();
     }
 }

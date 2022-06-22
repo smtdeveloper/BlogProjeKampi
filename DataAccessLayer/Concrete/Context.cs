@@ -13,7 +13,13 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server =(localdb)\\MSSQLLocalDB; database=CoreBlogDb; integrated security=true;");
+            //optionsBuilder.UseSqlServer("server =(localdb)\\MSSQLLocalDB; database=CoreBlogDb; integrated security=true;");
+
+            //optionsBuilder.UseSqlServer("server =205.144.171.18; database=db_a88619_smtblog; user=smtcoder-001; Password=Akca1975");
+
+            optionsBuilder.UseSqlServer("Data Source = SQL5109.site4now.net; Initial Catalog = db_a88619_smtblog; User Id = db_a88619_smtblog_admin; Password =Akca1975");
+
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

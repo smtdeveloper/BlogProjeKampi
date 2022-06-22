@@ -44,6 +44,9 @@ namespace BusinessLayer.Concrete
             _categoryDal.Update(entity);
         }
 
-        
+        public ICollection<Category> GetAllStatusActive()
+        {
+          return  _categoryDal.GetAllStatusActive();
+        }
     }
 }
