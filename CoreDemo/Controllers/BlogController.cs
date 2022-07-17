@@ -15,6 +15,7 @@ using X.PagedList;
 
 namespace CoreDemo.Controllers
 {
+    //samet
     [Authorize(Roles = "Admin,Moderator,Writer")]
 
     public class BlogController : Controller
