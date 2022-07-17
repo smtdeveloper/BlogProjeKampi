@@ -18,7 +18,7 @@ namespace CoreDemo.Controllers
            var result = aboutManager.TGetAll();
             return View(result);
         }
-        //sa
+        //saaaaa
         public PartialViewResult SocialMediaAbout()
         {
             return PartialView();
