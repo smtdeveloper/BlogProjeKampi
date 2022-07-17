@@ -46,6 +46,9 @@ namespace CoreDemo.Controllers
         {
             ViewBag.i = id;
             ViewBag.CommentId = id;
+            var username = User.Identity.Name;
+            ViewBag.name = username;
+
             var result = bm.GetBlogByID(id);
             return View(result);
         }

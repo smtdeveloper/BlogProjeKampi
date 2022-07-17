@@ -16,14 +16,16 @@
     {
 
         <div class="media">
-            @*<img src="~/web/images/t1.jpg" alt="" class="img-fluid" />*@
+            <img src="~/web/images/t1.jpg" alt="" class="img-fluid" />
             <div class="media-body">
                 <h5 class="mt-0">@item.UserName</h5>
 
-                <div>   <p> @item.Title :    @item.Content  </p> </div>
+                <div class="row"> <h6 class="p-1 pl-1" > <b>  @item.Title :  </b> </h6>   <h6 class="p-1">    @item.Content  </h6> </div>
 
+                <br />
             </div>
         </div>
+        
     }
 
 </div>

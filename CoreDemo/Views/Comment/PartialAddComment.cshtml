@@ -2,22 +2,24 @@
 
 
 <div class="form-group">
+    <br />
     <h3 class="text-primary" >Yorum Yaz</h3>
 
     <div class="">
         <form asp-action="PartialAddComment" asp-controller="Comment" method="post">
             <div class="form-row">
-                <div class="col-7">
-                    <input type="text" class="form-control" name="UserName" placeholder="Ad Soyad Giriniz" required="">
-                </div>
                 <div class="col-3">
                     <input type="text" class="form-control" name="Title" placeholder="Başlık Giriniz" required="">
                 </div>
+                <div class="col-7">
+                    <input type="hidden" class="form-control" name="UserName" placeholder="@ViewBag.name" value="@ViewBag.name" required="">
+                </div>
+              
                 <div class="col">
-                    <input type="text" class="form-control" name="BlogId" placeholder="Blog id" value="@ViewBag.CommentId" required="">
+                    <input type="hidden" class="form-control" name="BlogId" placeholder="Blog id" value="@ViewBag.CommentId" required="">
+
                 </div>
             </div>
-            <br />
             <div>
                 <textarea class="form-control" name="Content" placeholder="Yorumunuz..." required=""></textarea>
             </div>
@@ -25,7 +27,7 @@
       
             <button type="submit" class="btn btn-primary btn-lg btn-block">Yorum Yap</button>
         </form>
-        <h5 class="text-info" > Blog id :  @ViewBag.CommentId </h5>
+        
     </div>
         
     
