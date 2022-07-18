@@ -34,6 +34,11 @@ namespace CoreDemo.Controllers
             return View(new UserSignInModel());
         }
 
+        public IActionResult Index2()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Index(UserSignInModel model)
         {
