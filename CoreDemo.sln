@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreLayer", "CoreLayer\Core
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlogApiDemo", "BlogApiDemo\BlogApiDemo.csproj", "{2BBF3A87-84DA-4A1E-89F9-55D3C786F52C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jwt_core_proje", "jwt_core_proje\jwt_core_proje.csproj", "{85ABD263-E4B5-4912-A571-4A27126DBDB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jwt_core_proje", "jwt_core_proje\jwt_core_proje.csproj", "{85ABD263-E4B5-4912-A571-4A27126DBDB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{3A8A65DC-6550-43BC-B224-E53677D307BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{85ABD263-E4B5-4912-A571-4A27126DBDB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85ABD263-E4B5-4912-A571-4A27126DBDB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85ABD263-E4B5-4912-A571-4A27126DBDB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A8A65DC-6550-43BC-B224-E53677D307BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A8A65DC-6550-43BC-B224-E53677D307BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A8A65DC-6550-43BC-B224-E53677D307BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A8A65DC-6550-43BC-B224-E53677D307BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
